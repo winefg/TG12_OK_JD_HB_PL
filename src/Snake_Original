@@ -59,8 +59,8 @@ public class Snake_Original extends SnakeSpiel {
             collision = false;
             newApfelX = random.nextInt(spielfeld.getBreite());
             newApfelY = random.nextInt(spielfeld.getHoehe());
-            for(int i = 0; i < zellen.size()-1; i++){
-                if(newApfelX == zellen[i].getX() && newApfelY == zellen[i].getY()){
+            for(int i = 0; i < zelleArrayList.size()-1; i++){
+                if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
                     collision = true;
                 }
             }
@@ -71,7 +71,7 @@ public class Snake_Original extends SnakeSpiel {
 
     public boolean checkApfel(){
         boolean essen = false;
-        if (apfel.getX() == zellen[0].getX() && apfel.getY() == zellen[0].getY()){
+        if (apfel.getX() == zelleArrayList.get(0).getX() && apfel.getY() == zelleArrayList.get(0).getY()){
             essen = true;
         }
         return essen;
