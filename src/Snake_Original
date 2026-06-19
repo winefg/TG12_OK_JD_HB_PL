@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class Snake_Original extends SnakeSpiel {
+    private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
+    private int anzKoerperZellen;
+    private Spielfeld spielfeld = new Spielfeld(20, 20);
+    private Zelle kopfzelle = new Zelle(2, 0);
+    private char input = 'r';
+
+
+
+    public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
+        super(name, schwierigkeit);
+        this.anzKoerperZellen = anzKoerperZellen;
+        zelleArrayList.add(kopfzelle);
+    }
+
+
+    public void spiel_Start(){
+        Zelle koerperZelle1 = new Zelle(5,4);
+        Zelle koerperZelle2 = new Zelle(6,4);
+        zelleArrayList.add(koerperZelle1);
+        zelleArrayList.add(koerperZelle2);
+    }
+
+    public void laufen(){
+        switch (input){
+            case 'r': zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()+1);
+
+            case 'l': zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()-1);
+
+            case 'o': zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()-1);
+
+            case 'u': zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()+1);
+        }
+    }
+
+    public boolean checkVerloren(){
+        for (int i=0; i<anzKoerperZellen; i++){
+            if (zelleArrayList.get(0).getX()==zelleArrayList.get(i).getX()&&zelleArrayList.get(0).getY()==zelleArrayList.get(i).getY()){
+                System.out.println("trifft sich selbst");
+                return true;
+            } else if (zelleArrayList.get(0).getX()<0||zelleArrayList.get(0).getX()>spielfeld.getBreite()||zelleArrayList.get(0).getY()<0||zelleArrayList.get(0).getY()> spielfeld.getHoehe()) {
+                System.out.println("geht aus Spielfeld");
+                return true;
+            }
+        }
+        System.out.println(zelleArrayList.get(1).getX());
+        return false;
+    }
+
+}
