@@ -5,10 +5,10 @@ public class Snake_Original extends SnakeSpiel {
     private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
     private int anzKoerperZellen;
     private Spielfeld spielfeld = new Spielfeld(20, 20);
-    private Zelle kopfzelle = new Zelle(2, 0);
+    private Zelle kopfzelle = new Zelle(9, 10);
     private char input = 'r';
     Random random = new Random();
-    private Aepfel apfel = new Aepfel(10, 10);
+    private Aepfel apfel = new Aepfel(15, 10);
 
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
@@ -19,8 +19,8 @@ public class Snake_Original extends SnakeSpiel {
 
 
     public void spiel_Start(){
-        Zelle koerperZelle1 = new Zelle(5,4);
-        Zelle koerperZelle2 = new Zelle(6,4);
+        Zelle koerperZelle1 = new Zelle(8,10);
+        Zelle koerperZelle2 = new Zelle(7,10);
         zelleArrayList.add(koerperZelle1);
         zelleArrayList.add(koerperZelle2);
     }
