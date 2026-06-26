@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Snake_Original extends SnakeSpiel {
     private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
@@ -7,7 +8,8 @@ public class Snake_Original extends SnakeSpiel {
     private Spielfeld spielfeld = new Spielfeld(17, 17);
     private char input = 'r';
     Random random = new Random();
-    
+    private Zelle kopfzelle;
+    private Aepfel apfel;
 
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
@@ -16,14 +18,13 @@ public class Snake_Original extends SnakeSpiel {
         zelleArrayList.add(kopfzelle);
     }
 
-
     public void spiel_Start(){
-        private Zelle kopfzelle = new Zelle(4, 7);
+        kopfzelle = new Zelle(4, 7);
         Zelle koerperZelle1 = new Zelle(3,7);
         Zelle koerperZelle2 = new Zelle(2,7);
         zelleArrayList.add(koerperZelle1);
         zelleArrayList.add(koerperZelle2);
-        private Aepfel apfel = new Aepfel(12, 7);
+        apfel = new Aepfel(12, 7);
     }
 
     public void laufen(){
