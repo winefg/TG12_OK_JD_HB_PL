@@ -65,10 +65,9 @@ public class Snake_Original extends SnakeSpiel {
                         collision = true;
                     }
             }
-        }    while (collision){
-                apfel.setX(newApfelX);
-                apfel.setY(newApfelY);  
-            }   
+        }   while (collision);
+            apfel.setX(newApfelX);
+            apfel.setY(newApfelY);  
     }
 
     public boolean checkApfel(){
