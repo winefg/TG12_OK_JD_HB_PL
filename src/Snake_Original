@@ -4,11 +4,10 @@ import java.util.Arrays;
 public class Snake_Original extends SnakeSpiel {
     private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
     private int anzKoerperZellen;
-    private Spielfeld spielfeld = new Spielfeld(20, 20);
-    private Zelle kopfzelle = new Zelle(9, 10);
+    private Spielfeld spielfeld = new Spielfeld(17, 17);
     private char input = 'r';
     Random random = new Random();
-    private Aepfel apfel = new Aepfel(15, 10);
+    
 
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
@@ -19,10 +18,12 @@ public class Snake_Original extends SnakeSpiel {
 
 
     public void spiel_Start(){
-        Zelle koerperZelle1 = new Zelle(8,10);
-        Zelle koerperZelle2 = new Zelle(7,10);
+        private Zelle kopfzelle = new Zelle(4, 7);
+        Zelle koerperZelle1 = new Zelle(3,7);
+        Zelle koerperZelle2 = new Zelle(2,7);
         zelleArrayList.add(koerperZelle1);
         zelleArrayList.add(koerperZelle2);
+        private Aepfel apfel = new Aepfel(12, 7);
     }
 
     public void laufen(){
@@ -55,18 +56,19 @@ public class Snake_Original extends SnakeSpiel {
         boolean collision = true;
         int newApfelX;
         int newApfelY;
-        while (collision){
+        do{
             collision = false;
             newApfelX = random.nextInt(spielfeld.getBreite());
             newApfelY = random.nextInt(spielfeld.getHoehe());
             for(int i = 0; i < zelleArrayList.size()-1; i++){
-                if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
-                    collision = true;
-                }
+                    if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
+                        collision = true;
+                    }
             }
-        }
-        apfel.setX(newApfelX);
-        apfel.setY(newApfelY);
+        }    while (collision){
+                apfel.setX(newApfelX);
+                apfel.setY(newApfelY);  
+            }   
     }
 
     public boolean checkApfel(){
