@@ -1,0 +1,15 @@
+size(760,760);
+background(#B3D665);
+fill(#ACD05E);
+noStroke();
+for(int i = 0; i < 19; i++){
+  for(int l = 0; l < 19; l++){
+    if((i%2==0) && (l%2==1)){
+      rect(l*40, i*40, 40, 40);
+    }
+    if((i%2==1) && (l%2==0)){
+      rect(l*40, i*40, 40, 40);
+    }
+  }
+}
+//ebe_hintergrund = createGraphics(600, 400);
