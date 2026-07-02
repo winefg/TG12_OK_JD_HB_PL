@@ -1,30 +1,45 @@
-void drawSpielFeld() {
-  background(#B3D665);
+import processing.core.PApplet;
 
-  int cellSize = 40;
-  int gridSize = 19;
-
-  int fieldWidth = gridSize * cellSize;
-  int fieldHeight = gridSize * cellSize;
-
-  // Anfang des Feldes
-  int startX = (width - fieldWidth) / 2;   // in der Mitte (X-Achse)
-  int startY = 120;                        // oben Platz für Highscore machen
-
-  fill(#ACD05E);
-  noStroke();
-
-  for (int y = 0; y < gridSize; y++) {
-    for (int x = 0; x < gridSize; x++) {
-
-      if ((x + y) % 2 == 1) {
-        rect(
-          startX + x * cellSize,
-          startY + y * cellSize,
-          cellSize,
-          cellSize
-        );
-      }
+public class GUI_SNAKE_Portal extends PApplet {
+    public void settings() {
+        size(760, 760); // Set canvas size
     }
-  }
+
+    public void draw(){
+        background(179, 214, 101);
+
+        int cellSize = 40;
+        int gridSize = 19;
+
+        int fieldWidth = gridSize * cellSize;
+        int fieldHeight = gridSize * cellSize;
+
+        // Anfang des Feldes
+        int startX = (width - fieldWidth) / 2;   // in der Mitte (X-Achse)
+        int startY = 120;                        // oben Platz für Highscore machen
+
+        fill(172, 208, 94);
+        noStroke();
+
+        for (int y = 0; y < gridSize; y++) {
+            for (int x = 0; x < gridSize; x++) {
+
+                if ((x + y) % 2 == 1) {
+                    rect(
+                            startX + x * cellSize,
+                            startY + y * cellSize,
+                            cellSize,
+                            cellSize
+                    );
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        PApplet.main("GUI_SNAKE_Portal"); // Launch sketch
+
+    }
+
 }
