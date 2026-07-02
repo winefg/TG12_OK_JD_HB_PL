@@ -2,7 +2,7 @@ import processing.core.PApplet;
 
 public class GUI_SNAKE_Portal extends PApplet {
     public void settings() {
-        size(760, 760); // Set canvas size
+        size(1000, 1000); // Set canvas size
     }
 
     public void draw(){
@@ -37,9 +37,6 @@ public class GUI_SNAKE_Portal extends PApplet {
     }
 
     public static void main(String[] args) {
-
         PApplet.main("GUI_SNAKE_Portal"); // Launch sketch
-
     }
-
 }
