@@ -1,15 +1,30 @@
-size(760,760);
-background(#B3D665);
-fill(#ACD05E);
-noStroke();
-for(int i = 0; i < 19; i++){
-  for(int l = 0; l < 19; l++){
-    if((i%2==0) && (l%2==1)){
-      rect(l*40, i*40, 40, 40);
-    }
-    if((i%2==1) && (l%2==0)){
-      rect(l*40, i*40, 40, 40);
+void drawSpielFeld() {
+  background(#B3D665);
+
+  int cellSize = 40;
+  int gridSize = 19;
+
+  int fieldWidth = gridSize * cellSize;
+  int fieldHeight = gridSize * cellSize;
+
+  // Anfang des Feldes
+  int startX = (width - fieldWidth) / 2;   // in der Mitte (X-Achse)
+  int startY = 120;                        // oben Platz für Highscore machen
+
+  fill(#ACD05E);
+  noStroke();
+
+  for (int y = 0; y < gridSize; y++) {
+    for (int x = 0; x < gridSize; x++) {
+
+      if ((x + y) % 2 == 1) {
+        rect(
+          startX + x * cellSize,
+          startY + y * cellSize,
+          cellSize,
+          cellSize
+        );
+      }
     }
   }
 }
-//ebe_hintergrund = createGraphics(600, 400);
