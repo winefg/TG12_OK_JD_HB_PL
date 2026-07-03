@@ -1,0 +1,101 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Snake_Original extends SnakeSpiel {
+    private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
+    private int anzKoerperZellen;
+    private Spielfeld spielfeld = new Spielfeld(17, 17);
+    private char input = 'r';
+    private Random random = new Random();
+    private Zelle kopfzelle;
+    private Aepfel apfel;
+
+
+    public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
+        super(name, schwierigkeit);
+        this.anzKoerperZellen = anzKoerperZellen;
+        zelleArrayList.add(kopfzelle);
+    }
+
+    public void spiel_Start(){
+        kopfzelle = new Zelle(4, 7);
+        Zelle koerperZelle1 = new Zelle(3,7);
+        Zelle koerperZelle2 = new Zelle(2,7);
+        zelleArrayList.add(koerperZelle1);
+        zelleArrayList.add(koerperZelle2);
+        apfel = new Aepfel(12, 7);
+    }
+
+    public void laufen(){
+        switch (input){
+            case 'r':
+                zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()+1);
+                laufenKoerper();
+                break;
+
+            case 'l':
+                zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()-1);
+                laufenKoerper();
+                break;
+
+            case 'o':
+                zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()-1);
+                laufenKoerper();
+                break;
+
+            case 'u':
+                zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()+1);
+                laufenKoerper();
+                break;
+        }
+    }
+
+    private void laufenKoerper(){
+        for (int i = 1; i<anzKoerperZellen; i++){
+            zelleArrayList.get(i).setX(zelleArrayList.get(i-1).getX());
+            zelleArrayList.get(i).setY(zelleArrayList.get(i-1).getY());
+        }
+    }
+
+    public boolean checkVerloren(){
+        for (int i=0; i<anzKoerperZellen; i++){
+            if (zelleArrayList.get(0).getX()==zelleArrayList.get(i).getX()&&zelleArrayList.get(0).getY()==zelleArrayList.get(i).getY()){
+                System.out.println("trifft sich selbst");
+                return true;
+            } else if (zelleArrayList.get(0).getX()<0||zelleArrayList.get(0).getX()>spielfeld.getBreite()||zelleArrayList.get(0).getY()<0||zelleArrayList.get(0).getY()> spielfeld.getHoehe()) {
+                System.out.println("geht aus Spielfeld");
+                return true;
+            }
+        }
+        System.out.println(zelleArrayList.get(1).getX());
+        return false;
+    }
+
+    public void generateApfel() {
+        boolean collision = true;
+        int newApfelX;
+        int newApfelY;
+        do{
+            collision = false;
+            newApfelX = random.nextInt(spielfeld.getBreite());
+            newApfelY = random.nextInt(spielfeld.getHoehe());
+            for(int i = 0; i < zelleArrayList.size()-1; i++){
+                if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
+                    collision = true;
+                    break;
+                }
+            }
+        } while (collision);
+        apfel.setX(newApfelX);
+        apfel.setY(newApfelY);
+    }
+
+    public boolean checkApfel(){
+        boolean essen = false;
+        if (apfel.getX() == zelleArrayList.get(0).getX() && apfel.getY() == zelleArrayList.get(0).getY()){
+            essen = true;
+        }
+        return essen;
+    }
+}
