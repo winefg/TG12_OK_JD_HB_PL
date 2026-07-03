@@ -1,15 +1,20 @@
 import processing.core.PApplet;
+import processing.core.PGraphics;
 
 public class GUI extends PApplet {
     int state = 0; // 0 for first screen, 1 for second screen
+    PGraphics spielFeld; //Variable fürs Spielfeld erstellen
 
     public void settings() {
         size(1000, 1000);
+    }
 
+    public void setup(){
+        spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
     }
 
     public void draw() {
-        background(255f);
+        background(255);
 // Name des Spiels
         fill(0);
         textAlign(CENTER);
@@ -32,60 +37,53 @@ public class GUI extends PApplet {
     }
 
 
-    public void drawSpielFeld() {
-        background(70f, 84f, 40f);
+    void drawSpielFeld() {
+        spielFeld.beginDraw(); //bevor man beginnt in den Layer zu zeichnen
+        spielFeld.background(70, 84, 40); //immer die normalen Funktionen von Processing verwenden + Name der Variable davor
 
         int cellSize = 40;
         int gridSize = 19;
 
         int fieldSize = gridSize * cellSize;
-        // Anfang des Feldes
-        int startX = (width - fieldSize) / 2;   // in der Mitte (X-Achse)
-        int startY = 120;                        // oben Platz für Highscore machen
 
 // Stroke um Feld
-        stroke(0);        // schwarz рамка
-        strokeWeight(2);    // толщина
-        fill(179f, 214f, 101f);      // цвет фона поля
-        rect(startX, startY, fieldSize, fieldSize);
+        spielFeld.stroke(0);
+        spielFeld.strokeWeight(2);
+        spielFeld.fill(179, 214, 101);
+        spielFeld.rect(0, 0, fieldSize, fieldSize);
 
 
         // Kästchen
-        stroke(0f, 100f, 0f);        // белая рамка
-        strokeWeight(0);    // толщина
-        fill(172f, 208f, 94f);
+        spielFeld.stroke(0, 100, 0);
+        spielFeld.strokeWeight(0);
+        spielFeld.fill(172, 208, 94);
 
 
         for (int y = 0; y < gridSize; y++) {
             for (int x = 0; x < gridSize; x++) {
 
                 if ((x + y) % 2 == 1) {
-                    rect(
-                            startX + x * cellSize,
-                            startY + y * cellSize,
+                    spielFeld.rect(
+                            x * cellSize,
+                            y * cellSize,
                             cellSize,
                             cellSize
                     );
                 }
             }
         }
+        spielFeld.endDraw(); //Wenn fertig mit Zeichnen in diesem Layer
+        image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Übergeordneten Spielfeld
+
         // Panel
-
-
+        fill(0);
         text("Highscore: 2048", 100, 40);
-
         text("Score: 0", 100, 80);
-
-        // Button
-
+        // Button Zurück
         fill(100);
-
         rect(width - 170, 25, 140, 50, 10);
-
         fill(255);
-
         textAlign(CENTER, CENTER);
-
         text("Zurück", width - 100, 50);
     }
 
@@ -98,16 +96,16 @@ public class GUI extends PApplet {
             println("Start gedrückt!");
             state = 1;
         }
-
+        if (mouseX > width - 170 &&
+                mouseX < width - 30 &&
+                mouseY > 25 &&
+                mouseY < 75) {
+            println("Zurück gedrückt!");
+            state = 0;
+        }
     }
 
-
-
-
-
-
-
-    public static void main(String[] args){
-        PApplet.main("GUI");
+    public static void main(String[] args) {
+        PApplet.main("GUI"); // Launch sketch
     }
 }
