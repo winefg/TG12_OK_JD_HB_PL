@@ -4,6 +4,7 @@ import processing.core.PGraphics;
 public class GUI extends PApplet {
     int state = 0; // 0 for first screen, 1 for second screen
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
+    PGraphics panel;
 
     public void settings() {
         size(1000, 1000);
@@ -11,29 +12,20 @@ public class GUI extends PApplet {
 
     public void setup(){
         spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
+        panel = createGraphics(1000, 1000);
     }
 
     public void draw() {
-        background(255);
-// Name des Spiels
-        fill(0);
-        textAlign(CENTER);
-        textSize(80);
-        text("Alex lange Schlange", 500, 100);
-
-// Start-Button
-        fill(0);
-        rect(400, 250, 200, 60);
-        fill(255);
-        textAlign(CENTER);
-        textSize(30);
-        text("START", 500, 290);
-
-        if (state == 1) {
+        if (state==0){
+            drawStartPage();
+        } else if (state == 1) {
+            rect(0,0,1000,1000);
+            drawPanelSpielfeld();
             drawSpielFeld();
+            state=2;
+        } else if (state==2) {
+            drawSnake();
         }
-
-// Login
     }
 
 
@@ -74,19 +66,46 @@ public class GUI extends PApplet {
         }
         spielFeld.endDraw(); //Wenn fertig mit Zeichnen in diesem Layer
         image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Übergeordneten Spielfeld
+    }
+    void drawPanelSpielfeld(){
 
         // Panel
-        fill(0);
-        text("Highscore: 2048", 100, 40);
-        text("Score: 0", 100, 80);
+        panel.beginDraw();
+        panel.textAlign(CENTER);
+        panel.textSize(30);
+        panel.fill(0);
+        panel.text("Highscore: 2048", 100, 40);
+        panel.text("Score: 0", 100, 80);
         // Button Zurück
-        fill(100);
-        rect(width - 170, 25, 140, 50, 10);
-        fill(255);
-        textAlign(CENTER, CENTER);
-        text("Zurück", width - 100, 50);
+        panel.fill(100);
+        panel.rect(width - 170, 25, 140, 50, 10);
+        panel.fill(255);
+        panel.textAlign(CENTER, CENTER);
+        panel.text("Zurück", width - 100, 50);
+        panel.endDraw();
+        image(panel, 0,0);
     }
 
+    void drawStartPage() {
+        background(255);
+// Name des Spiels
+        fill(0);
+        textAlign(CENTER);
+        textSize(80);
+        text("Schlange", 500, 100);
+
+// Start-Button
+        fill(0);
+        rect(400, 250, 200, 60);
+        fill(255);
+        textAlign(CENTER);
+        textSize(30);
+        text("START", 500, 290);
+    }
+
+    void drawSnake(){
+        rect(405,405,30,30);
+    }
 
     public void mousePressed() {
         if (mouseX > 400 &&
