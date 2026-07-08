@@ -50,4 +50,12 @@ public class Steuerung {
     //private int getSpielerID(String name, String passwort){
 
    // }
+
+
+
+    public String getHighscore(){
+        int hs =  highscoreDB.get(0).getHighscore();
+        String hsS = Integer.toString(hs);
+        return hsS;
+    }
 }
