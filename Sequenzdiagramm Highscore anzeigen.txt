@@ -1,0 +1,27 @@
+//Erstellt mit https://sequencediagram.org
+
+title Highscore anzeigen
+
+actor Benutzer
+participant GUI
+participant Steuerung
+participant Highscore
+
+activate Benutzer
+Benutzer -> GUI: Spiel starten
+
+GUI -> Steuerung: getHighscore()
+
+activate Steuerung
+
+Steuerung -> Highscore: getHighscore()
+
+activate Highscore
+Highscore --> Steuerung: int highscore
+deactivate Highscore
+
+Steuerung --> GUI: String highscore
+deactivate Steuerung
+
+GUI -> GUI: text(highscore, 100, 40)
+GUI --> Benutzer: Highscore wird angezeigt
