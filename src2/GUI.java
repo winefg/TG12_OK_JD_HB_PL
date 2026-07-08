@@ -2,6 +2,7 @@ import processing.core.PApplet;
 import processing.core.PGraphics;
 
 public class GUI extends PApplet {
+    Steuerung steuerung = new Steuerung();
     int state = 0; // 0 for first screen, 1 for second screen
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
     PGraphics panel;
@@ -13,6 +14,8 @@ public class GUI extends PApplet {
     public void setup(){
         spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
         panel = createGraphics(1000, 1000);
+        Highscore hsTest = new Highscore(1,1,67);
+        steuerung.addHighscore(hsTest);
     }
 
     public void draw() {
@@ -74,7 +77,7 @@ public class GUI extends PApplet {
         panel.textAlign(CENTER);
         panel.textSize(30);
         panel.fill(0);
-        panel.text("Highscore: 2048", 100, 40);
+        panel.text(steuerung.getHighscore(), 100, 40);
         panel.text("Score: 0", 100, 80);
         // Button Zurück
         panel.fill(100);
