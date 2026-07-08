@@ -1,0 +1,38 @@
+title Spieler anmelden
+
+actor Benutzer
+participant Steuerung
+participant Spieler
+participant GUI
+
+activate Benutzer
+
+Benutzer -> Steuerung: Login(name)
+
+activate Steuerung
+
+loop Für jeden Spieler
+    Steuerung -> Spieler: getName()
+    activate Spieler
+    Spieler -->> Steuerung: name
+    deactivate Spieler
+    
+opt Spieler gefunden
+    Steuerung -> Spieler: setAktiv(true)
+    activate Spieler
+    Steuerung<<--Spieler:
+    deactivate Spieler
+    Steuerung -> GUI: Login erfolgreich
+    activate GUI
+    GUI -->> Benutzer: Spiel startet
+    deactivate GUI
+end
+end
+opt Spieler nicht gefunden
+    Steuerung -> GUI: Fehlermeldung anzeigen
+    activate GUI
+    GUI -->> Benutzer: "Spieler existiert nicht"
+    deactivate GUI
+    end
+
+deactivate Steuerung
