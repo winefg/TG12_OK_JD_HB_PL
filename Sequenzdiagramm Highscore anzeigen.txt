@@ -1,7 +1,6 @@
 //Erstellt mit https://sequencediagram.org
 
 
-
 title Highscore anzeigen
 
 actor Benutzer
@@ -13,7 +12,7 @@ activate Benutzer
 Benutzer -> GUI: Spiel starten
 activate GUI
 
-GUI -> Steuerung: getHighscore()
+GUI -> Steuerung: anzeigenHighscore()
 
 activate Steuerung
 
@@ -30,6 +29,10 @@ Steuerung -->>Steuerung:String highscore
 deactivate Steuerung
 
 Steuerung -> GUI: text(highscore, 100, 40)
+activate GUI
+GUI -->> Steuerung: 
+deactivate GUI
+Steuerung -->> GUI: 
 deactivate Steuerung
 
-GUI --> Benutzer: Highscore wird angezeigt
+GUI -->> Benutzer: Highscore wird angezeigt
