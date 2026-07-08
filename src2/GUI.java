@@ -77,7 +77,7 @@ public class GUI extends PApplet {
         panel.textAlign(CENTER);
         panel.textSize(30);
         panel.fill(0);
-        panel.text(steuerung.getHighscore(), 100, 40);
+        steuerung.anzeigenHighscore();
         panel.text("Score: 0", 100, 80);
         // Button Zurück
         panel.fill(100);
