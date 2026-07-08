@@ -11,10 +11,12 @@ public class Steuerung {
     private ArrayList<Highscore> highscoreDB;
 
     //GUI-Zeug
+    GUI dieGUI = new GUI();
 
     public Steuerung() {
         snakeSpiel = new ArrayList<>();
         highscoreDB = new ArrayList<>();
+
     }
 
     public void addSpiel(SnakeSpiel spiel) {
@@ -53,9 +55,9 @@ public class Steuerung {
 
 
 
-    public String getHighscore(){
+    public void anzeigenHighscore(){
         int hs =  highscoreDB.get(0).getHighscore();
         String hsS = Integer.toString(hs);
-        return hsS;
+        dieGUI.panel.text(hsS, 100, 40);
     }
 }
