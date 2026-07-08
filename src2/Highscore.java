@@ -18,7 +18,7 @@ public class Highscore {
         return spielID;
     }
 
-    private int getHighscore() {
+    public int getHighscore() {
         return highscore;
     }
 }
