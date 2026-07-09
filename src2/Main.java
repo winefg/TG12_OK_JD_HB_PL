@@ -1,3 +1,5 @@
+import db.MyJDBC;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -6,6 +8,7 @@ public class Main {
         ss.spiel_Start();
 
         //check user test
-        System.out.println(MyJDBC.checkUser("nickname"));
+
+        System.out.println(MyJDBC.register("user1", "123"));
     }
 }
