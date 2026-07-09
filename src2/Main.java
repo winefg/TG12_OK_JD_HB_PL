@@ -4,5 +4,8 @@ public class Main {
     public static void main(String[] args) {
         Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
         ss.spiel_Start();
+
+        //check user test
+        System.out.println(MyJDBC.checkUser("nickname"));
     }
 }
