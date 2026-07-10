@@ -5,5 +5,5 @@ public class CommonConstants{
     public static final String DB_USERNAME = "root";
     public static final String DB_PASSWORD = "";
     public static final String DB_USERS_TABLE_NAME = "USERS";
-
+    public static final String DB_HIGHSCORES_TABLE_NAME = "HIGHSCORES";
 }

@@ -7,8 +7,8 @@ public class Main {
         Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
         ss.spiel_Start();
 
-        //check user test
 
-        System.out.println(MyJDBC.register("user1", "123"));
+        System.out.println(MyJDBC.register("root", "000"));
+        System.out.println(MyJDBC.checkUser("root"));
     }
 }
