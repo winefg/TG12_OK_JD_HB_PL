@@ -11,12 +11,12 @@ public class Steuerung {
     private ArrayList<Highscore> highscoreDB;
 
     //GUI-Zeug
-    GUI dieGUI = new GUI();
+    private GUI dieGUI;
 
-    public Steuerung() {
+    public Steuerung(GUI dieGUI) {
         snakeSpiel = new ArrayList<>();
         highscoreDB = new ArrayList<>();
-
+        this.dieGUI = dieGUI;
     }
 
     public void addSpiel(SnakeSpiel spiel) {
