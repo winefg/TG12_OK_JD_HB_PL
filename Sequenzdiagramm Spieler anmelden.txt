@@ -7,15 +7,23 @@ participant GUI
 
 activate Benutzer
 
-Benutzer -> Steuerung: Login(name)
+Benutzer -> Steuerung: login(name: String, password: String)
 
 activate Steuerung
 
 loop Für jeden Spieler
     Steuerung -> Spieler: getName()
     activate Spieler
+    
     Spieler -->> Steuerung: name
     deactivate Spieler
+    
+    Steuerung -> Spieler: getPassword()
+    activate Spieler
+    
+    Spieler -->> Steuerung: password
+    deactivate Spieler
+    
     
 opt Spieler gefunden
     Steuerung -> Spieler: setAktiv(true)
@@ -29,7 +37,7 @@ opt Spieler gefunden
 end
 end
 opt Spieler nicht gefunden
-    Steuerung -> GUI: Fehlermeldung anzeigen
+    Steuerung -> GUI: setAktiv(false)
     activate GUI
     GUI -->> Benutzer: "Spieler existiert nicht"
     deactivate GUI
