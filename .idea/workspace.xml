@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/Aepfel" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Aepfel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Highscore" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Highscore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SnakeSpiel" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/SnakeSpiel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake_Original" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Snake_Original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spieler" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Spieler" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spielfeld" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Spielfeld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spielfeld.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Spielfeld.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Steuerung" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Steuerung" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zelle" beforeDir="false" afterPath="$PROJECT_DIR$/src_old/Zelle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Aepfel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aepfel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Highscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Highscore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/SnakeSpiel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnakeSpiel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Spieler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spieler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Spielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spielfeld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/Zelle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/constants/CommonConstants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/CommonConstants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src2/db/MyJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/MyJDBC.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "hbr3d"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/winefg/TG12_OK_JD_HB_PL.git",
+    "accountId": "6538338e-8799-469b-af19-9049469d893f"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="3GIgfrOqOMsIVmqK6OzZ5lkRIt9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "to.speed.mode.migration.done": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-cffe25b9f5b3-intellij.indexing.shared.core-IU-253.28294.334" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="" />
+      <created>1783664603747</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1783664603747</updated>
+    </task>
+    <servers />
+  </component>
+</project>
