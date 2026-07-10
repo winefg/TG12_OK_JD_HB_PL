@@ -8,7 +8,7 @@ public class Main {
         ss.spiel_Start();
 
 
-        System.out.println(MyJDBC.register("root", "000"));
+        // System.out.println(MyJDBC.register("root", "000"));
         System.out.println(MyJDBC.checkUser("root"));
     }
 }
