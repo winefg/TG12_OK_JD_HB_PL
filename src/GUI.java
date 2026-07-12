@@ -83,7 +83,7 @@ public class GUI extends PApplet {
             }
         }
         spielFeld.endDraw(); //Wenn fertig mit Zeichnen in diesem Layer
-        image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Übergeordneten Spielfeld
+        image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Uebergeordneten Spielfeld
     }
 
     int focusedField = 0;

@@ -9,7 +9,7 @@ public class Steuerung {
 
     private ArrayList<SnakeSpiel> snakeSpiel;
     private ArrayList<Highscore> highscoreDB;
-    Snake_Original snakeSpielZurück = (Snake_Original) snakeSpiel.getFirst();
+    Snake_Original snakeSpielZurueck = (Snake_Original) snakeSpiel.getFirst();
     Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
 
     //GUI-Zeug
@@ -22,7 +22,7 @@ public class Steuerung {
     }
 
     public void doLaufen() {
-        snakeSpielZurück.laufen();
+        snakeSpielZurueck.laufen();
     }
 
     public void checkInput(){
