@@ -32,6 +32,7 @@ public class Highscore {
         return highscoreRekord;
     }
 
+
     public void setHighscoreRekord(int highscoreRekord) {
         this.highscoreRekord = highscoreRekord;
     }
