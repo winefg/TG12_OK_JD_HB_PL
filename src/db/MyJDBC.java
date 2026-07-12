@@ -50,7 +50,66 @@ public class MyJDBC {
         }
         return true;
     }
+
+
+    //_________________________________________________________________________________________________
+
+
+
+    public static int getHighscore(int spielerID) {
+
+        try {
+
+            Connection connection = DriverManager.getConnection(
+                    CommonConstants.DB_URL,
+                    CommonConstants.DB_USERNAME,
+                    CommonConstants.DB_PASSWORD
+            );
+
+            PreparedStatement statement = connection.prepareStatement(
+
+                    "SELECT highscore FROM " +
+                            CommonConstants.DB_USERS_TABLE_NAME +
+                            " WHERE id = ?"
+            );
+
+            statement.setInt(1, spielerID);
+
+            ResultSet rs = statement.executeQuery();
+
+            if(rs.next()) {
+                return rs.getInt("highscore");
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+
+    public static void updateHighscore(int spielerID, int highscore) {
+
+        try {
+            Connection connection = DriverManager.getConnection(
+                    CommonConstants.DB_URL,
+                    CommonConstants.DB_USERNAME,
+                    CommonConstants.DB_PASSWORD
+            );
+
+            PreparedStatement statement = connection.prepareStatement(
+                    "UPDATE " + CommonConstants.DB_USERS_TABLE_NAME +
+                            " SET highscore = ? WHERE id = ?"
+            );
+
+            statement.setInt(1, highscore);
+            statement.setInt(2, spielerID);
+
+            statement.executeUpdate();
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
-
-
-
