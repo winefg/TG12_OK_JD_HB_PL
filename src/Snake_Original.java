@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -11,15 +13,48 @@ public class Snake_Original extends SnakeSpiel {
     private Zelle kopfzelle;
     private Aepfel apfel;
 
+    KeyListener keyListener = new KeyListener() {
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+
+            switch (keyCode){
+                case KeyEvent.VK_UP:
+                    input = 'o';
+                    break;
+                case KeyEvent.VK_DOWN:
+                    input = 'u';
+                    break;
+                case KeyEvent.VK_LEFT:
+                    input = 'l';
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    input = 'r';
+                    break;
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
+    };
+
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
         super(name, schwierigkeit);
         this.anzKoerperZellen = anzKoerperZellen;
-        zelleArrayList.add(kopfzelle);
     }
 
     public void spiel_Start(){
         kopfzelle = new Zelle(4, 7);
+        zelleArrayList.add(kopfzelle);
+
         Zelle koerperZelle1 = new Zelle(3,7);
         Zelle koerperZelle2 = new Zelle(2,7);
         zelleArrayList.add(koerperZelle1);
@@ -32,21 +67,25 @@ public class Snake_Original extends SnakeSpiel {
             case 'r':
                 zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()+1);
                 laufenKoerper();
+                System.out.println("Rechts laufen!");
                 break;
 
             case 'l':
                 zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()-1);
                 laufenKoerper();
+                System.out.println("Links laufen!");
                 break;
 
             case 'o':
                 zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()-1);
                 laufenKoerper();
+                System.out.println("Oben laufen!");
                 break;
 
             case 'u':
                 zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()+1);
                 laufenKoerper();
+                System.out.println("Unten laufen!");
                 break;
         }
     }
@@ -59,7 +98,7 @@ public class Snake_Original extends SnakeSpiel {
     }
 
     public boolean checkVerloren(){
-        for (int i=0; i<anzKoerperZellen; i++){
+        for (int i=zelleArrayList.size()-1; i>0; i--){
             if (zelleArrayList.get(0).getX()==zelleArrayList.get(i).getX()&&zelleArrayList.get(0).getY()==zelleArrayList.get(i).getY()){
                 System.out.println("trifft sich selbst");
                 return true;

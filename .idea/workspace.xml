@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment=".">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/core_4_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/core_4_5_2.xml" afterDir="false" />
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="update src">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/core_4_5_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Highscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Highscore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/MyJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/MyJDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Clone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Clone.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +22,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -31,6 +35,65 @@
     &quot;accountId&quot;: &quot;6538338e-8799-469b-af19-9049469d893f&quot;
   }
 }</component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000000013" />
+      <entry key="S5" value="1.0000011642704039" />
+      <entry key="S10" value="1.0013791825773755" />
+      <entry key="S30" value="1.210787141213144" />
+      <entry key="S60" value="1.8012485436370471" />
+      <entry key="M2" value="2.804106881828056" />
+      <entry key="M5" value="5.647266203944434" />
+      <entry key="M10" value="9.819097192695285" />
+      <entry key="M15" value="13.782542201876119" />
+      <entry key="M30" value="23.13003832409973" />
+      <entry key="H1" value="32.675976338241924" />
+      <entry key="H2" value="39.72588193924207" />
+      <entry key="H4" value="44.04238255279291" />
+      <entry key="D1" value="48.125046696429656" />
+      <entry key="W1" value="48.873755965162374" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="2.330215376932537E-77" />
+      <entry key="S2" value="6.947827318680085E-20" />
+      <entry key="S5" value="2.171398864485422E-8" />
+      <entry key="S10" value="1.473567524802838E-4" />
+      <entry key="S30" value="0.05325457958989575" />
+      <entry key="S60" value="0.25424805333667183" />
+      <entry key="M2" value="0.7655776900340081" />
+      <entry key="M5" value="2.9471257490715694" />
+      <entry key="M10" value="7.093300916479197" />
+      <entry key="M15" value="11.146887748684797" />
+      <entry key="M30" value="20.275951459569814" />
+      <entry key="H1" value="29.20351467494221" />
+      <entry key="H2" value="35.648702082759435" />
+      <entry key="H4" value="39.551059640638115" />
+      <entry key="D1" value="43.21713682508297" />
+      <entry key="W1" value="43.88710128966296" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="5.574359788592826E-295" />
+      <entry key="MS500" value="1.557660303063951E-59" />
+      <entry key="S2" value="3.040237006597057E-15" />
+      <entry key="S5" value="2.4047424295084172E-6" />
+      <entry key="S10" value="0.002589398889920162" />
+      <entry key="S30" value="0.36224184504376605" />
+      <entry key="S60" value="1.3645206821021247" />
+      <entry key="M2" value="3.1161164683610196" />
+      <entry key="M5" value="8.358337029488702" />
+      <entry key="M10" value="16.768180841709018" />
+      <entry key="M15" value="24.81805179890673" />
+      <entry key="M30" value="43.332150136313274" />
+      <entry key="H1" value="61.833024711371394" />
+      <entry key="H2" value="75.34775130411558" />
+      <entry key="H4" value="83.578910895616" />
+      <entry key="D1" value="91.33958454447328" />
+      <entry key="W1" value="92.76048131399205" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -39,21 +102,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GUI.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,6 +134,19 @@
       <option name="presentableId" value="Default" />
       <updated>1783664603747</updated>
     </task>
+    <task id="LOCAL-00001" summary="update src">
+      <option name="closed" value="true" />
+      <created>1783665608032</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1783665608032</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update src" />
+    <option name="LAST_COMMIT_MESSAGE" value="update src" />
   </component>
 </project>

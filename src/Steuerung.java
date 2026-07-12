@@ -9,6 +9,8 @@ public class Steuerung {
 
     private ArrayList<SnakeSpiel> snakeSpiel;
     private ArrayList<Highscore> highscoreDB;
+    Snake_Original snakeSpielZurück = (Snake_Original) snakeSpiel.getFirst();
+    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
 
     //GUI-Zeug
     private GUI dieGUI;
@@ -19,6 +21,13 @@ public class Steuerung {
         this.dieGUI = dieGUI;
     }
 
+    public void doLaufen() {
+        snakeSpielZurück.laufen();
+    }
+
+    public void checkInput(){
+
+    }
     public void addSpiel(SnakeSpiel spiel) {
         snakeSpiel.add(spiel);
         anzSpiele++;
@@ -52,7 +61,6 @@ public class Steuerung {
     //private int getSpielerID(String name, String passwort){
 
    // }
-
 
 
     public void anzeigenHighscore(){

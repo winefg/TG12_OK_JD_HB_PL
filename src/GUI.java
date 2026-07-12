@@ -7,6 +7,8 @@ public class GUI extends PApplet {
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
     PGraphics panel;
     PGraphics login;
+    int letzterSchrittZeit = 0;
+    int geschwindigkeitMs = 200; // Alle 200 Millisekunden ein Schritt (kleiner = schneller)
 
     public void settings() {
         size(1000, 1000);
@@ -19,6 +21,7 @@ public class GUI extends PApplet {
         panel = createGraphics(1000, 1000);
         Highscore hsTest = new Highscore(1,1,67);
         steuerung.addHighscore(hsTest);
+        steuerung.addSpiel(steuerung.ss);
 
         login = createGraphics(500, 350);
 
@@ -33,6 +36,9 @@ public class GUI extends PApplet {
             drawSpielFeld();
             state=2;
         } else if (state==2) {
+            if (millis()-letzterSchrittZeit >= geschwindigkeitMs){
+                steuerung.doLaufen();
+            }
             drawSnake();
         } else if (state==3) {
             drawPanelLogin();
@@ -209,6 +215,7 @@ public class GUI extends PApplet {
                 mouseY > 250 &&
                 mouseY < 310) {
             println("Start gedrückt!");
+            steuerung.ss.spiel_Start();
             state = 1;
         }
         if (mouseX > width - 170 &&

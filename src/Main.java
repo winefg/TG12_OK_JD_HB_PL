@@ -4,8 +4,7 @@ import db.MyJDBC;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
-        ss.spiel_Start();
+
 
 
         // System.out.println(MyJDBC.register("root", "000"));
