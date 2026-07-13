@@ -35,6 +35,12 @@ public class Steuerung {
         Snake_Original aktuellesSpiel = getAktuellesSpiel();
         if (aktuellesSpiel != null) {
             aktuellesSpiel.laufen();
+
+            aktuellesSpiel.checkApfel();
+
+            if (aktuellesSpiel.checkVerloren()) {
+                spielBeendet();
+            }
         }
     }
 
@@ -67,14 +73,6 @@ public class Steuerung {
         return -1;
     }
     */
-    //public void login(String name, String passwort){
-
-   // }
-
-    //private int getSpielerID(String name, String passwort){
-
-   // }
-
 
     public void anzeigenHighscore() {
         String hsS = "Highscore: " + Integer.toString(highscore.getHighscore());
@@ -83,6 +81,12 @@ public class Steuerung {
         dieGUI.panel.fill(0); // Schwarze Textfarbe
         dieGUI.panel.textAlign(dieGUI.CENTER); // Zentriert (oder LEFT, je nach Wunsch)
         dieGUI.panel.text(hsS, 100, 40); // Text an Position x=100, y=40 schreiben
+    }
+
+
+    public void spielBeendet() {
+        System.out.println("Spiel vorbei");
+        dieGUI.state = 0;
     }
 
 }
