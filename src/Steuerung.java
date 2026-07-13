@@ -1,3 +1,4 @@
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Steuerung {
@@ -9,8 +10,7 @@ public class Steuerung {
 
     private ArrayList<SnakeSpiel> snakeSpiel;
     private ArrayList<Highscore> highscoreDB;
-    Snake_Original snakeSpielZurueck = (Snake_Original) snakeSpiel.getFirst();
-    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
+
 
     //GUI-Zeug
     private GUI dieGUI;
@@ -19,15 +19,32 @@ public class Steuerung {
         snakeSpiel = new ArrayList<>();
         highscoreDB = new ArrayList<>();
         this.dieGUI = dieGUI;
+
     }
 
+    private Snake_Original getAktuellesSpiel() {
+        if (snakeSpiel == null || snakeSpiel.isEmpty()) {
+            return null; // Verhindert den Absturz, wenn noch kein Spiel gestartet wurde
+        }
+        return (Snake_Original) snakeSpiel.getFirst();
+    }
+
+    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
     public void doLaufen() {
-        snakeSpielZurueck.laufen();
+        Snake_Original aktuellesSpiel = getAktuellesSpiel();
+        if (aktuellesSpiel != null) {
+            aktuellesSpiel.laufen();
+        }
     }
 
-    public void checkInput(){
-
+    // Wird von der GUI aufgerufen, sobald eine Taste gedrückt wurde
+    public void checkInput(int keyCode) {
+        Snake_Original aktuellesSpiel = getAktuellesSpiel();
+        if (aktuellesSpiel != null) {
+            aktuellesSpiel.verarbeiteTastendruck(keyCode);
+        }
     }
+
     public void addSpiel(SnakeSpiel spiel) {
         snakeSpiel.add(spiel);
         anzSpiele++;
@@ -69,3 +86,5 @@ public class Steuerung {
         dieGUI.panel.text(hsS, 100, 40);
     }
 }
+
+

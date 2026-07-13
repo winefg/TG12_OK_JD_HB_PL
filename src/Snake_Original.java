@@ -13,37 +13,30 @@ public class Snake_Original extends SnakeSpiel {
     private Zelle kopfzelle;
     private Aepfel apfel;
 
-    KeyListener keyListener = new KeyListener() {
-        @Override
-        public void keyTyped(KeyEvent e) {
+    // Verarbeitet den Tastendruck direkt aus Processing
+    public void verarbeiteTastendruck(int keyCode) {
+        // Processing nutzt standardmäßig 'CODED' für Pfeiltasten
+        // und stellt Variablen wie UP, DOWN, LEFT, RIGHT bereit (als int)
 
+        // Wichtig: Verhindere, dass die Schlange direkt in sich selbst zurückläuft!
+        switch (keyCode) {
+            case 38: // Code für Pfeiltaste OBEN (UP)
+                if (input != 'u') input = 'o';
+                break;
+            case 40: // Code für Pfeiltaste UNTEN (DOWN)
+                if (input != 'o') input = 'u';
+                break;
+            case 37: // Code für Pfeiltaste LINKS (LEFT)
+                if (input != 'r') input = 'l';
+                break;
+            case 39: // Code für Pfeiltaste RECHTS (RIGHT)
+                if (input != 'l') input = 'r';
+                break;
         }
+    }
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int keyCode = e.getKeyCode();
 
-            switch (keyCode){
-                case KeyEvent.VK_UP:
-                    input = 'o';
-                    break;
-                case KeyEvent.VK_DOWN:
-                    input = 'u';
-                    break;
-                case KeyEvent.VK_LEFT:
-                    input = 'l';
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    input = 'r';
-                    break;
-            }
-        }
 
-        @Override
-        public void keyReleased(KeyEvent e) {
-
-        }
-    };
 
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
@@ -137,4 +130,5 @@ public class Snake_Original extends SnakeSpiel {
         }
         return essen;
     }
+
 }

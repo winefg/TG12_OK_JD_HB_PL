@@ -22,9 +22,15 @@ public class GUI extends PApplet {
         Highscore hsTest = new Highscore(1,1,67);
         steuerung.addHighscore(hsTest);
         steuerung.addSpiel(steuerung.ss);
-
         login = createGraphics(500, 350);
+    }
 
+    @Override
+    public void keyPressed() {
+        // 'keyCode' ist eine eingebaute globale Variable in Processing
+        if (steuerung != null) {
+            steuerung.checkInput(keyCode);
+        }
     }
 
     public void draw() {
@@ -88,7 +94,7 @@ public class GUI extends PApplet {
 
     int focusedField = 0;
 
-    String nickname = "";
+    String nickname = " ";
     boolean nicknameActive = false;
     String nicknameRegister = "";
 
