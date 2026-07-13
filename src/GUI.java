@@ -73,8 +73,9 @@ public class GUI extends PApplet {
 
 
 // Kästchen
-        spielFeld.stroke(0, 100, 0);
-        spielFeld.strokeWeight(0);
+        //spielFeld.stroke(0, 100, 0);
+        //spielFeld.strokeWeight(0);
+        spielFeld.noStroke();
         spielFeld.fill(172, 208, 94);
 
 
