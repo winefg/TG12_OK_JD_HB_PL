@@ -130,7 +130,7 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setY(newApfelY);
     }
 
-    private void checkApfel(){
+    public void checkApfel(){
         if (apfel.getX() == zelleArrayList.getFirst().getX() && apfel.getY() == zelleArrayList.getFirst().getY()){
             Zelle letzteZelle = zelleArrayList.getLast();
             Zelle neueZelle = new Zelle(letzteZelle.getX(), letzteZelle.getY());
