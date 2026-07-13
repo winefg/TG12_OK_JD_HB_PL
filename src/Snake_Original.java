@@ -1,30 +1,37 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Snake_Original extends SnakeSpiel {
     private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
     private int anzKoerperZellen;
-    private Spielfeld spielfeld = new Spielfeld(19, 19); // Auf 19x19 angepasst, passend zur GUI!
-    private char input = 'r';
+    private Spielfeld spielfeld = new Spielfeld(17, 17);
+    private char input;
     private Random random = new Random();
     private Zelle kopfzelle;
     private Aepfel apfel;
+    private char lastInput;
 
     // Verarbeitet den Tastendruck direkt aus Processing
     public void verarbeiteTastendruck(int keyCode) {
+        // Processing nutzt standardmäßig 'CODED' für Pfeiltasten
+        // und stellt Variablen wie UP, DOWN, LEFT, RIGHT bereit (als int)
+
         // Wichtig: Verhindere, dass die Schlange direkt in sich selbst zurückläuft!
         switch (keyCode) {
-            case 38, 87: // Code für Pfeiltaste OBEN (UP) oder W
-                if (input != 'u') input = 'o';
+            case 38, 87: // Code für Pfeiltaste OBEN (UP)
+                if (lastInput != 'u') input = 'o';
                 break;
-            case 40, 83: // Code für Pfeiltaste UNTEN (DOWN) oder S
-                if (input != 'o') input = 'u';
+            case 40, 83: // Code für Pfeiltaste UNTEN (DOWN)
+                if (lastInput != 'o') input = 'u';
                 break;
-            case 37, 65: // Code für Pfeiltaste LINKS (LEFT) oder A
-                if (input != 'r') input = 'l';
+            case 37, 65: // Code für Pfeiltaste LINKS (LEFT)
+                if (lastInput != 'r') input = 'l';
                 break;
-            case 39, 68: // Code für Pfeiltaste RECHTS (RIGHT) oder D
-                if (input != 'l') input = 'r';
+            case 39, 68: // Code für Pfeiltaste RECHTS (RIGHT)
+                if (lastInput != 'l') input = 'r';
                 break;
         }
     }
@@ -39,7 +46,9 @@ public class Snake_Original extends SnakeSpiel {
     }
 
     public void spiel_Start(){
-        zelleArrayList.clear(); // Liste leeren, falls davor schon ein Spiel lief!
+        input = 'r';
+        lastInput = 'r';
+        zelleArrayList.clear();
 
         kopfzelle = new Zelle(4, 7);
         zelleArrayList.add(kopfzelle);
@@ -49,7 +58,6 @@ public class Snake_Original extends SnakeSpiel {
         zelleArrayList.add(koerperZelle1);
         zelleArrayList.add(koerperZelle2);
         apfel = new Aepfel(12, 7);
-        input = 'r'; // Startrichtung zurücksetzen
     }
 
     public void laufen(){
@@ -76,6 +84,7 @@ public class Snake_Original extends SnakeSpiel {
                 System.out.println("Unten laufen!");
                 break;
         }
+        lastInput = input;
     }
 
     private void laufenKoerper() {
@@ -85,40 +94,30 @@ public class Snake_Original extends SnakeSpiel {
         }
     }
 
-
     public boolean checkVerloren(){
-                Zelle kopf = zelleArrayList.get(0);
-
-        // aus dem spielfeld (wand)
-        if (kopf.getX() < 0 || kopf.getX() >= spielfeld.getBreite() ||
-                kopf.getY() < 0 || kopf.getY() >= spielfeld.getHoehe()) {
-            System.out.println("aus spielfeld");
-            return true;
-        }
-
-        // körper berühren
-        for (int i = 1; i < zelleArrayList.size(); i++) {
-            Zelle koerperTeil = zelleArrayList.get(i);
-            if (kopf.getX() == koerperTeil.getX() && kopf.getY() == koerperTeil.getY()) {
-                System.out.println("crash");
+        for (int i=zelleArrayList.size()-1; i>0; i--){
+            if (zelleArrayList.get(0).getX()==zelleArrayList.get(i).getX()&&zelleArrayList.get(0).getY()==zelleArrayList.get(i).getY()){
+                System.out.println("trifft sich selbst");
+                return true;
+            } else if (zelleArrayList.get(0).getX()<0||zelleArrayList.get(0).getX()>spielfeld.getBreite()||zelleArrayList.get(0).getY()<0||zelleArrayList.get(0).getY()> spielfeld.getHoehe()) {
+                System.out.println("geht aus Spielfeld");
                 return true;
             }
         }
+        System.out.println(zelleArrayList.get(1).getX());
         return false;
     }
 
-
-
     public void generateApfel() {
-        boolean collision;
+        boolean collision = true;
         int newApfelX;
         int newApfelY;
-        do {
+        do{
             collision = false;
             newApfelX = random.nextInt(spielfeld.getBreite());
             newApfelY = random.nextInt(spielfeld.getHoehe());
-            for (int i = 0; i < zelleArrayList.size(); i++) {
-                if (newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()) {
+            for(int i = 0; i < zelleArrayList.size(); i++){
+                if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
                     collision = true;
                     break;
                 }
@@ -137,4 +136,5 @@ public class Snake_Original extends SnakeSpiel {
             generateApfel();
         }
     }
+
 }

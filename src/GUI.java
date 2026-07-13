@@ -9,7 +9,7 @@ public class GUI extends PApplet {
     PGraphics login;
     PGraphics schlange;
     int letzterSchrittZeit = 0;
-    int geschwindigkeitMs = 500; // Alle 200 Millisekunden ein Schritt (kleiner = schneller)
+    int geschwindigkeitMs =400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
     public void settings() {
         size(1000, 1000);

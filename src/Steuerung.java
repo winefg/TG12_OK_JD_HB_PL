@@ -12,7 +12,7 @@ public class Steuerung {
 
     private ArrayList<SnakeSpiel> snakeSpiel;
 
-    Highscore highscore = new Highscore(aktSpielerID, aktSpielID, MyJDBC.getScoreAusDatenbank(aktSpielerID));
+    Highscore highscore;
 
     //GUI-Zeug
     private GUI dieGUI;
@@ -52,9 +52,11 @@ public class Steuerung {
         }
     }
 
+
     public void addSpiel(SnakeSpiel spiel) {
         snakeSpiel.add(spiel);
         anzSpiele++;
+        highscore = new Highscore(aktSpielerID, aktSpielID, MyJDBC.getScoreAusDatenbank(aktSpielerID));
     }
 
   /*  private int getIndexHighscore(int spielerID, int spielID) {

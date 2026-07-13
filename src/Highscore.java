@@ -2,13 +2,13 @@ public class Highscore {
 
     private int spielerID;
     private int spielID;
-    private int highscore;          // aktueller Highscore des Spiels
+    private int score;          // aktueller Score des Spiels
     private int highscoreRekord;    // Rekord aus der Datenbank
 
     public Highscore(int spielerID, int spielID, int highscoreRekord) {
         this.spielerID = spielerID;
         this.spielID = spielID;
-        this.highscore = 0;
+        this.score = 0;
         this.highscoreRekord = highscoreRekord;
     }
 
@@ -23,12 +23,12 @@ public class Highscore {
         return spielID;
     }
 
-    public int getHighscore() {
-        return highscore;
+    public int getScore() {
+        return score;
     }
 
-    public void setHighscore(int highscore) {
-        this.highscore = highscore;
+    public void setScore(int highscore) {
+        this.score = highscore;
     }
 
     public int getHighscoreRekord() {
