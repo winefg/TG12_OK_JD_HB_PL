@@ -22,7 +22,7 @@ public class Steuerung {
 
     }
 
-    private Snake_Original getAktuellesSpiel() {
+    public Snake_Original getAktuellesSpiel() {
         if (snakeSpiel == null || snakeSpiel.isEmpty()) {
             return null; // Verhindert den Absturz, wenn noch kein Spiel gestartet wurde
         }
@@ -85,6 +85,7 @@ public class Steuerung {
         String hsS = Integer.toString(hs);
         dieGUI.panel.text(hsS, 100, 40);
     }
+
 }
 
 

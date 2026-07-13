@@ -212,7 +212,7 @@ public class GUI extends PApplet {
     }
 
     void drawSnake(){
-        rect(405,405,30,30);
+        rect(steuerung.getAktuellesSpiel().getZelleArrayList().get(0).getX(),steuerung.getAktuellesSpiel().getZelleArrayList().get(0).getY(),30,30);
     }
 
     public void mousePressed() {

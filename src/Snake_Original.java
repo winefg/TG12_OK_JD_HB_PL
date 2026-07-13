@@ -35,9 +35,9 @@ public class Snake_Original extends SnakeSpiel {
         }
     }
 
-
-
-
+    public ArrayList<Zelle> getZelleArrayList() {
+        return zelleArrayList;
+    }
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
         super(name, schwierigkeit);
