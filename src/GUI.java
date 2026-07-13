@@ -20,8 +20,7 @@ public class GUI extends PApplet {
         steuerung = new Steuerung(this);
         spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
         panel = createGraphics(1000, 1000);
-        Highscore hsTest = new Highscore(1,1,67);
-        steuerung.addHighscore(hsTest);
+
         steuerung.addSpiel(steuerung.ss);
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
@@ -48,6 +47,7 @@ public class GUI extends PApplet {
                 letzterSchrittZeit = millis();
                 steuerung.doLaufen();
             }
+            drawSpielFeld();
             drawSnake();
         } else if (state==3) {
             drawPanelLogin();
@@ -166,22 +166,31 @@ public class GUI extends PApplet {
 
 
     void drawPanelSpielfeld(){
-
-        // Panel
+        // Panel-Zeichnung starten
         panel.beginDraw();
+        panel.background(220); // Empfohlen: Hintergrund säubern, sonst clippt der Text beim Neuzeichnen
+
         panel.textAlign(CENTER);
         panel.textSize(30);
         panel.fill(0);
+
+        // Ruft die Steuerung auf, die den Highscore auf das Panel zeichnet
         steuerung.anzeigenHighscore();
-        panel.text("Score: 0", 100, 80);
+
+        // Normaler Score (etwas nach unten versetzt bei y=90, damit es nicht kollidiert)
+        panel.text("Score: 0", 100, 90);
+
         // Button Zurück
         panel.fill(100);
         panel.rect(width - 170, 25, 140, 50, 10);
         panel.fill(255);
         panel.textAlign(CENTER, CENTER);
         panel.text("Zurück", width - 100, 50);
+
         panel.endDraw();
-        image(panel, 0,0);
+
+        // Das fertige Panel auf den Hauptbildschirm bringen
+        image(panel, 0, 0);
     }
 
     void drawStartPage() {

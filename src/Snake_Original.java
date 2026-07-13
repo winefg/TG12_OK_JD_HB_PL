@@ -20,16 +20,16 @@ public class Snake_Original extends SnakeSpiel {
 
         // Wichtig: Verhindere, dass die Schlange direkt in sich selbst zurückläuft!
         switch (keyCode) {
-            case 38: // Code für Pfeiltaste OBEN (UP)
+            case 38, 87: // Code für Pfeiltaste OBEN (UP)
                 if (input != 'u') input = 'o';
                 break;
-            case 40: // Code für Pfeiltaste UNTEN (DOWN)
+            case 40, 83: // Code für Pfeiltaste UNTEN (DOWN)
                 if (input != 'o') input = 'u';
                 break;
-            case 37: // Code für Pfeiltaste LINKS (LEFT)
+            case 37, 65: // Code für Pfeiltaste LINKS (LEFT)
                 if (input != 'r') input = 'l';
                 break;
-            case 39: // Code für Pfeiltaste RECHTS (RIGHT)
+            case 39, 68: // Code für Pfeiltaste RECHTS (RIGHT)
                 if (input != 'l') input = 'r';
                 break;
         }
@@ -121,12 +121,14 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setY(newApfelY);
     }
 
-    public boolean checkApfel(){
-        boolean essen = false;
+    public void checkApfel(){
         if (apfel.getX() == zelleArrayList.get(0).getX() && apfel.getY() == zelleArrayList.get(0).getY()){
-            essen = true;
+            Zelle letzteZelle = zelleArrayList.get(zelleArrayList.size() - 1);
+            Zelle neueZelle = new Zelle(letzteZelle.getX(), letzteZelle.getY());
+            zelleArrayList.add(neueZelle);
+            anzKoerperZellen++;
+            generateApfel();
         }
-        return essen;
     }
 
 }
