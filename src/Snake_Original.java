@@ -121,12 +121,14 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setY(newApfelY);
     }
 
-    public boolean checkApfel(){
-        boolean essen = false;
+    public void checkApfel(){
         if (apfel.getX() == zelleArrayList.get(0).getX() && apfel.getY() == zelleArrayList.get(0).getY()){
-            essen = true;
+            Zelle letzteZelle = zelleArrayList.get(zelleArrayList.size() - 1);
+            Zelle neueZelle = new Zelle(letzteZelle.getX(), letzteZelle.getY());
+            zelleArrayList.add(neueZelle);
+            anzKoerperZellen++;
+            generateApfel();
         }
-        return essen;
     }
 
 }

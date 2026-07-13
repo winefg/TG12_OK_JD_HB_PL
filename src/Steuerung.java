@@ -1,3 +1,5 @@
+import db.MyJDBC;
+
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
@@ -9,15 +11,14 @@ public class Steuerung {
     private int aktSpielID;
 
     private ArrayList<SnakeSpiel> snakeSpiel;
-    private ArrayList<Highscore> highscoreDB;
 
+    Highscore highscore = new Highscore(aktSpielerID, aktSpielID, MyJDBC.getScoreAusDatenbank(aktSpielerID));
 
     //GUI-Zeug
     private GUI dieGUI;
 
     public Steuerung(GUI dieGUI) {
         snakeSpiel = new ArrayList<>();
-        highscoreDB = new ArrayList<>();
         this.dieGUI = dieGUI;
 
     }
@@ -50,16 +51,11 @@ public class Steuerung {
         anzSpiele++;
     }
 
-    public void addHighscore(Highscore hs) {
-        highscoreDB.add(hs);
-        anzHighscores++;
-    }
+  /*  private int getIndexHighscore(int spielerID, int spielID) {
 
-    private int getIndexHighscore(int spielerID, int spielID) {
+        for (int i = 0; i < highscore.size(); i++) {
 
-        for (int i = 0; i < highscoreDB.size(); i++) {
-
-            Highscore hs = highscoreDB.get(i);
+            Highscore hs = highscore.get(i);
 
             if (hs.getSpielerID() == spielerID &&
                     hs.getSpielID() == spielID) {
@@ -70,7 +66,7 @@ public class Steuerung {
 
         return -1;
     }
-
+    */
     //public void login(String name, String passwort){
 
    // }
@@ -80,10 +76,13 @@ public class Steuerung {
    // }
 
 
-    public void anzeigenHighscore(){
-        int hs =  highscoreDB.get(0).getHighscore();
-        String hsS = Integer.toString(hs);
-        dieGUI.panel.text(hsS, 100, 40);
+    public void anzeigenHighscore() {
+        String hsS = "Highscore: " + Integer.toString(highscore.getHighscore());
+
+        // Wichtig: Auf dem 'panel'-Objekt zeichnen und Styling setzen
+        dieGUI.panel.fill(0); // Schwarze Textfarbe
+        dieGUI.panel.textAlign(dieGUI.CENTER); // Zentriert (oder LEFT, je nach Wunsch)
+        dieGUI.panel.text(hsS, 100, 40); // Text an Position x=100, y=40 schreiben
     }
 
 }
