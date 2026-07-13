@@ -56,37 +56,35 @@ public class Snake_Original extends SnakeSpiel {
     }
 
     public void laufen(){
+        laufenKoerper();
+
         switch (input){
             case 'r':
                 zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()+1);
-                laufenKoerper();
                 System.out.println("Rechts laufen!");
                 break;
 
             case 'l':
                 zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()-1);
-                laufenKoerper();
                 System.out.println("Links laufen!");
                 break;
 
             case 'o':
                 zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()-1);
-                laufenKoerper();
                 System.out.println("Oben laufen!");
                 break;
 
             case 'u':
                 zelleArrayList.get(0).setY(zelleArrayList.get(0).getY()+1);
-                laufenKoerper();
                 System.out.println("Unten laufen!");
                 break;
         }
     }
 
-    private void laufenKoerper(){
-        for (int i = 1; i<anzKoerperZellen; i++){
-            zelleArrayList.get(i).setX(zelleArrayList.get(i-1).getX());
-            zelleArrayList.get(i).setY(zelleArrayList.get(i-1).getY());
+    private void laufenKoerper() {
+        for (int i = zelleArrayList.size() - 1; i > 0; i--) {
+            zelleArrayList.get(i).setX(zelleArrayList.get(i - 1).getX());
+            zelleArrayList.get(i).setY(zelleArrayList.get(i - 1).getY());
         }
     }
 
@@ -112,7 +110,7 @@ public class Snake_Original extends SnakeSpiel {
             collision = false;
             newApfelX = random.nextInt(spielfeld.getBreite());
             newApfelY = random.nextInt(spielfeld.getHoehe());
-            for(int i = 0; i < zelleArrayList.size()-1; i++){
+            for(int i = 0; i < zelleArrayList.size(); i++){
                 if(newApfelX == zelleArrayList.get(i).getX() && newApfelY == zelleArrayList.get(i).getY()){
                     collision = true;
                     break;
