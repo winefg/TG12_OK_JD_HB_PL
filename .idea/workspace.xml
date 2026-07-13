@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Inputs zum Laufen fertig">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -156,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783965449358</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
+      <option name="closed" value="true" />
+      <created>1783976805099</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1783976805099</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +167,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update src" />
     <MESSAGE value="Inputs zum Laufen fertig" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inputs zum Laufen fertig" />
+    <MESSAGE value="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt" />
   </component>
 </project>

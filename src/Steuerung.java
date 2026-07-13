@@ -77,7 +77,7 @@ public class Steuerung {
     */
 
     public void anzeigenHighscore() {
-        String hsS = "Highscore: " + Integer.toString(highscore.getHighscore());
+        String hsS = "Highscore: " + Integer.toString(highscore.getScore());
 
         // Wichtig: Auf dem 'panel'-Objekt zeichnen und Styling setzen
         dieGUI.panel.fill(0); // Schwarze Textfarbe
