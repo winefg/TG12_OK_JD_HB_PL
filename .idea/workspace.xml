@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/Highscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Highscore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783976805099</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
+      <option name="closed" value="true" />
+      <created>1783976981576</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783976981576</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

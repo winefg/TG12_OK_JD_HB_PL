@@ -99,7 +99,7 @@ public class Snake_Original extends SnakeSpiel {
             if (zelleArrayList.get(0).getX()==zelleArrayList.get(i).getX()&&zelleArrayList.get(0).getY()==zelleArrayList.get(i).getY()){
                 System.out.println("trifft sich selbst");
                 return true;
-            } else if (zelleArrayList.get(0).getX()<0||zelleArrayList.get(0).getX()>spielfeld.getBreite()||zelleArrayList.get(0).getY()<0||zelleArrayList.get(0).getY()> spielfeld.getHoehe()) {
+            } else if (zelleArrayList.get(0).getX()<0||zelleArrayList.get(0).getX()>spielfeld.getBreite()+1||zelleArrayList.get(0).getY()<0||zelleArrayList.get(0).getY()> spielfeld.getHoehe()+1) {
                 System.out.println("geht aus Spielfeld");
                 return true;
             }
