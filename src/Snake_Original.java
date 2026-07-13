@@ -40,6 +40,10 @@ public class Snake_Original extends SnakeSpiel {
         return zelleArrayList;
     }
 
+    public Aepfel getApfel() {
+        return apfel;
+    }
+
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
         super(name, schwierigkeit);
         this.anzKoerperZellen = anzKoerperZellen;
@@ -62,7 +66,6 @@ public class Snake_Original extends SnakeSpiel {
 
     public void laufen(){
         laufenKoerper();
-
         switch (input){
             case 'r':
                 zelleArrayList.get(0).setX(zelleArrayList.get(0).getX()+1);
@@ -127,14 +130,13 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setY(newApfelY);
     }
 
-    public void checkApfel(){
-        if (apfel.getX() == zelleArrayList.get(0).getX() && apfel.getY() == zelleArrayList.get(0).getY()){
-            Zelle letzteZelle = zelleArrayList.get(zelleArrayList.size() - 1);
+    private void checkApfel(){
+        if (apfel.getX() == zelleArrayList.getFirst().getX() && apfel.getY() == zelleArrayList.getFirst().getY()){
+            Zelle letzteZelle = zelleArrayList.getLast();
             Zelle neueZelle = new Zelle(letzteZelle.getX(), letzteZelle.getY());
             zelleArrayList.add(neueZelle);
             anzKoerperZellen++;
             generateApfel();
         }
     }
-
 }

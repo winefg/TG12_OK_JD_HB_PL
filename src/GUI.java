@@ -8,6 +8,7 @@ public class GUI extends PApplet {
     PGraphics panel;
     PGraphics login;
     PGraphics schlange;
+    PGraphics apfel;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs =400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
@@ -24,6 +25,7 @@ public class GUI extends PApplet {
         steuerung.addSpiel(steuerung.ss);
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
+        apfel = createGraphics(760, 760);
     }
 
     @Override
@@ -49,6 +51,7 @@ public class GUI extends PApplet {
             }
             drawSpielFeld();
             drawSnake();
+            drawApfel();
         } else if (state==3) {
             drawPanelLogin();
             image(login, 250, 600);
@@ -232,12 +235,21 @@ public class GUI extends PApplet {
         schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX())),40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+2, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()), 36);
         schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+2, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY())), 36, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()));
         for (int i = 1; i < steuerung.getAktuellesSpiel().getZelleArrayList().size(); i++) {
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36);
+            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36); //Quadrat 36x36 Körper
             schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getX() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) * 20, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 4, 36);
             schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getY() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) * 20, 36, 4);
         }
         schlange.endDraw();
         image(schlange, 120,120);
+    }
+
+    public void drawApfel(){
+        apfel.beginDraw();
+        apfel.noStroke();
+        apfel.fill(213, 83, 47);
+        apfel.circle(20*steuerung.getAktuellesSpiel().getApfel().getX()+20, 20*steuerung.getAktuellesSpiel().getApfel().getY(),38);
+        apfel.endDraw();
+        image(apfel, 120,120);
     }
 
     public void mousePressed() {

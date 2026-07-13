@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Inputs zum Laufen fertig">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Highscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Highscore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +23,12 @@
     &quot;assignee&quot;: &quot;hbr3d&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/winefg/TG12_OK_JD_HB_PL.git&quot;,
-    &quot;accountId&quot;: &quot;d7375bef-a886-489c-8d06-dc950390f19e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/winefg/TG12_OK_JD_HB_PL.git",
+    "accountId": "d7375bef-a886-489c-8d06-dc950390f19e"
   }
-}</component>
+}]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
@@ -154,23 +152,7 @@
       <option name="project" value="LOCAL" />
       <updated>1783965449358</updated>
     </task>
-    <task id="LOCAL-00003" summary="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
-      <option name="closed" value="true" />
-      <created>1783976805099</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1783976805099</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt">
-      <option name="closed" value="true" />
-      <created>1783976981576</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1783976981576</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,7 +161,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update src" />
     <MESSAGE value="Inputs zum Laufen fertig" />
-    <MESSAGE value="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Laufen angepasst: Kein rückwärtslaufen&#10;Bei Start wieder alles auf anfang.&#10;Highscore zu score umbenannt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inputs zum Laufen fertig" />
   </component>
 </project>
