@@ -44,6 +44,7 @@ public class GUI extends PApplet {
             if (millis()-letzterSchrittZeit >= geschwindigkeitMs){
                 steuerung.doLaufen();
             }
+            drawSpielFeld();
             drawSnake();
         } else if (state==3) {
             drawPanelLogin();
