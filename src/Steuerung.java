@@ -132,6 +132,21 @@ public class Steuerung {
     public void setAktSpielerID(int id){
         this.aktSpielerID = id;
     }
+
+    public int getHighscore(){
+        if (highscore == null) {
+            return 0;
+        }
+        return highscore.getHighscoreRekord();
+    }
+
+    public int getScore() {
+        if (highscore == null) {
+            return 0;
+        }
+        return highscore.getScore();
+
+    }
 }
 
 

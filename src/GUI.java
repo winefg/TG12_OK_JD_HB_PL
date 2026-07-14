@@ -481,8 +481,9 @@ public class GUI extends PApplet {
         // Highscore
         gameOver.fill(255);
         gameOver.textSize(35);
-        gameOver.text("Highscore: 6767", 380, 170);
-
+        gameOver.text("Highscore: " + steuerung.getHighscore(), 380, 170);
+        // Aktueller Score
+        gameOver.text("Score: " + steuerung.getScore(), 380, 220);
         // Ragequit-Button
         gameOver.fill(180, 40, 40);
         gameOver.rect(180, 280, 400, 70, 15);
