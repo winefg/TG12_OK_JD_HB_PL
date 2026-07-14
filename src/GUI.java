@@ -4,6 +4,7 @@ import processing.core.PGraphics;
 import static db.MyJDBC.*;
 
 
+
 public class GUI extends PApplet {
     Steuerung steuerung;
     Highscore highscore;
@@ -13,6 +14,8 @@ public class GUI extends PApplet {
     PGraphics login;
     PGraphics schlange;
     PGraphics apfel;
+    PGraphics endScreen;
+    PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
@@ -28,6 +31,8 @@ public class GUI extends PApplet {
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
         apfel = createGraphics(760, 760);
+        gameOver = createGraphics(760, 760);
+        endScreen = createGraphics(1000, 1000);
     }
 
     @Override
@@ -39,14 +44,14 @@ public class GUI extends PApplet {
     }
 
     public void draw() {
-        if (state==0){
+        if (state==0){                  //Startbildschirm
             drawStartPage();
-        } else if (state == 1) {
+        } else if (state == 1) {                //Hintergrund zeichnen
             rect(0,0,1000,1000);
             drawPanelSpielfeld();
             drawSpielFeld();
             state=2;
-        } else if (state==2) {
+        } else if (state==2) {          //Spiel konstant zeichnen
             if (millis()-letzterSchrittZeit >= geschwindigkeitMs){
                 letzterSchrittZeit = millis();
                 steuerung.doLaufen();
@@ -55,9 +60,15 @@ public class GUI extends PApplet {
             drawSpielFeld();
             drawSnake();
             drawApfel();
-        } else if (state==3) {
+        } else if (state==3) {          //Login-Bildschirm
             drawPanelLogin();
             image(login, 250, 600);
+        }
+        else if (state == 4) {          //Game-Over-Bildschirm
+            drawGameOver();
+        }
+        else if (state == 5) {
+            drawWinScreen();
         }
     }
 
@@ -257,11 +268,40 @@ public class GUI extends PApplet {
         image(apfel, 120,120);
     }
 
+    public void drawWinScreen(){
+        endScreen.beginDraw();
+        endScreen.background(40);
+        endScreen.fill(0, 1);
+        endScreen.rect(0,0,1000, 1000);
+        endScreen.textAlign(CENTER, CENTER);
+        endScreen.fill(255);
+        endScreen.textSize(55);
+        endScreen.text("GEWONNEN", 500,100);
+
+        endScreen.textSize(35);
+        endScreen.text("Highscore: ", 500, 290); //Oleksandr muss hier mit Datenbank carrien
+
+        endScreen.fill(180, 40, 40);
+        endScreen.rect(300, 400, 400, 70, 15);
+        endScreen.fill(255);
+        endScreen.textSize(30);
+        endScreen.text("Ausloggen", 500, 435);
+
+        endScreen.fill(40, 180, 40);
+        endScreen.rect(300, 510, 400, 70, 15);
+        endScreen.fill(255);
+        endScreen.text("Neustart", 500, 545); //Konflikt in der Detektion mit Login vom Startpanel
+
+        endScreen.endDraw();
+        image(endScreen, 0,0);
+    }
+
     public void mousePressed() {
         if (mouseX > 400 &&
                 mouseX < 600 &&
                 mouseY > 250 &&
-                mouseY < 310) {
+                mouseY < 310 &&
+                state == 0) {
             println("Start gedrückt!");
             steuerung.ss.spiel_Start();
             steuerung.highscore.setScore(0);
@@ -271,14 +311,16 @@ public class GUI extends PApplet {
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
                 mouseY > 25 &&
-                mouseY < 75) {
+                mouseY < 75 &&
+                state == 2) {
             println("Zurück gedrückt!");
             state = 0;
         }
         if (mouseX > 400 &&
                 mouseX < 600 &&
                 mouseY > 500 &&
-                mouseY < 560) {
+                mouseY < 560 &&
+                state == 0) {
             println("Login gedrückt");
             state = 3;
         }
@@ -329,6 +371,34 @@ public class GUI extends PApplet {
                 focusedField = 3;
                 register = true;
                 println("not registered gedrückt!");
+            }
+        }
+
+        if (state == 4) {
+
+            // Ragequit
+            if (mouseX > 300 && mouseX < 700 &&
+                    mouseY > 400 && mouseY < 470) {
+
+                println("Ausloggen");
+
+                nickname = "";
+                password = "";
+
+                state = 0;
+            }
+
+            // Neustart
+            if (mouseX > 300 && mouseX < 700 &&
+                    mouseY > 510 && mouseY < 580) {
+
+                println("Neustart");
+
+                steuerung.ss.spiel_Start();
+
+                letzterSchrittZeit = millis();
+
+                state = 1;
             }
         }
 
@@ -396,7 +466,45 @@ public class GUI extends PApplet {
         }
 
     }
+    void drawGameOver() {
+
+        gameOver.beginDraw();
+        gameOver.background(40);
+
+        gameOver.textAlign(CENTER, CENTER);
+
+        // Titel
+        gameOver.fill(255, 0, 0);
+        gameOver.textSize(55);
+        gameOver.text("Leider verkackt", 380, 80);
+
+        // Highscore
+        gameOver.fill(255);
+        gameOver.textSize(35);
+        gameOver.text("Highscore: 6767", 380, 170);
+
+        // Ragequit-Button
+        gameOver.fill(180, 40, 40);
+        gameOver.rect(180, 280, 400, 70, 15);
+
+        gameOver.fill(255);
+        gameOver.textSize(30);
+        gameOver.text("Ragequit", 380, 315);
+
+        // Neustart-Button
+        gameOver.fill(40, 180, 40);
+        gameOver.rect(180, 390, 400, 70, 15);
+
+        gameOver.fill(255);
+        gameOver.text("Neustart", 380, 425);
+
+        gameOver.endDraw();
+
+        image(gameOver, 120, 120);
+    }
+
     public static void main(String[] args) {
         PApplet.main("GUI"); // Launch sketch
     }
 }
+
