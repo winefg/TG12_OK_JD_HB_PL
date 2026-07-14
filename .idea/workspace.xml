@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Apfel anzeigen fertig stellen">
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="GUI nach dem Spiel mit buttons" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +12,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -159,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784040042923</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="GUI nach dem Spiel mit buttons">
+      <option name="closed" value="true" />
+      <created>1784043732152</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1784043732152</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +175,7 @@
     <MESSAGE value="update src" />
     <MESSAGE value="Inputs zum Laufen fertig" />
     <MESSAGE value="Apfel anzeigen fertig stellen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Apfel anzeigen fertig stellen" />
+    <MESSAGE value="GUI nach dem Spiel mit buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI nach dem Spiel mit buttons" />
   </component>
 </project>

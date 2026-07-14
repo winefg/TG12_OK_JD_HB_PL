@@ -390,7 +390,7 @@ public class GUI extends PApplet {
 
             } else {
                 password += key;
-            } //SOPHIE RAIN AUF DIE 1!!!
+            }
         }
         if (register == true && focusedField == 11) {   // Delete Register-Nick
             if (key == BACKSPACE) {
