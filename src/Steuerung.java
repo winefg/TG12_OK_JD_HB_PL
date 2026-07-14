@@ -47,6 +47,9 @@ public class Steuerung {
             if (aktuellesSpiel.checkVerloren()) {
                 spielBeendet();
             }
+            if (aktuellesSpiel.getSpielfeld().getHoehe()*aktuellesSpiel.getSpielfeld().getBreite()==aktuellesSpiel.getZelleArrayList().size()){
+                spielGewonnen();
+            }
         }
     }
 
@@ -100,6 +103,11 @@ public class Steuerung {
     public void spielBeendet() {
         System.out.println("Spiel vorbei");
         dieGUI.state = 4;
+    }
+
+    public void spielGewonnen() {
+        System.out.println("Spiel gewonnen");
+        dieGUI.state = 5;
     }
 
 }

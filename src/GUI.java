@@ -67,8 +67,10 @@ public class GUI extends PApplet {
         else if (state == 4) {          //Game-Over-Bildschirm
             drawGameOver();
         }
+        else if (state == 5) {
+            drawWinScreen();
+        }
     }
-
 
     void drawSpielFeld() {
         spielFeld.beginDraw(); //bevor man beginnt in den Layer zu zeichnen
@@ -267,7 +269,28 @@ public class GUI extends PApplet {
 
     public void drawWinScreen(){
         endScreen.beginDraw();
-        endScreen.fill(0, 180);
+        endScreen.background(40);
+        endScreen.fill(0, 1);
+        endScreen.rect(0,0,1000, 1000);
+        endScreen.textAlign(CENTER, CENTER);
+        endScreen.fill(255);
+        endScreen.textSize(55);
+        endScreen.text("GEWONNEN", 500,100);
+
+        endScreen.textSize(35);
+        endScreen.text("Highscore: ", 500, 290); //Oleksandr muss hier mit Datenbank carrien
+
+        endScreen.fill(180, 40, 40);
+        endScreen.rect(300, 400, 400, 70, 15);
+        endScreen.fill(255);
+        endScreen.textSize(30);
+        endScreen.text("Ausloggen", 500, 435);
+
+        endScreen.fill(40, 180, 40);
+        endScreen.rect(300, 510, 400, 70, 15);
+        endScreen.fill(255);
+        endScreen.text("Neustart", 500, 545); //Konflikt in der Detektion mit Login vom Startpanel
+
         endScreen.endDraw();
         image(endScreen, 0,0);
     }
