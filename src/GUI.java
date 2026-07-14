@@ -13,6 +13,7 @@ public class GUI extends PApplet {
     PGraphics login;
     PGraphics schlange;
     PGraphics apfel;
+    PGraphics endScreen;
     PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
@@ -26,12 +27,12 @@ public class GUI extends PApplet {
         steuerung = new Steuerung(this);
         spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
         panel = createGraphics(1000, 1000);
-
         steuerung.addSpiel(steuerung.ss);
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
         apfel = createGraphics(760, 760);
         gameOver = createGraphics(760, 760);
+        endScreen = createGraphics(1000, 1000);
     }
 
     @Override
@@ -262,6 +263,13 @@ public class GUI extends PApplet {
         apfel.circle(40*steuerung.getAktuellesSpiel().getApfel().getX()+20, 40*steuerung.getAktuellesSpiel().getApfel().getY()+20,38);
         apfel.endDraw();
         image(apfel, 120,120);
+    }
+
+    public void drawWinScreen(){
+        endScreen.beginDraw();
+        endScreen.fill(0, 180);
+        endScreen.endDraw();
+        image(endScreen, 0,0);
     }
 
     public void mousePressed() {

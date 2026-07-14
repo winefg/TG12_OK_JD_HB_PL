@@ -142,4 +142,8 @@ public class Snake_Original extends SnakeSpiel {
         }
         return false;
     }
+
+    public Spielfeld getSpielfeld() {
+        return spielfeld;
+    }
 }
