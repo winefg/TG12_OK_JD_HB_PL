@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Apfel anzeigen fertig stellen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

@@ -99,7 +99,7 @@ public class Steuerung {
 
     public void spielBeendet() {
         System.out.println("Spiel vorbei");
-        dieGUI.state = 0;
+        dieGUI.state = 4;
     }
 
 }

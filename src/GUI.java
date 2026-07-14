@@ -13,6 +13,7 @@ public class GUI extends PApplet {
     PGraphics login;
     PGraphics schlange;
     PGraphics apfel;
+    PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
@@ -30,6 +31,7 @@ public class GUI extends PApplet {
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
         apfel = createGraphics(760, 760);
+        gameOver = createGraphics(760, 760);
     }
 
     @Override
@@ -60,6 +62,9 @@ public class GUI extends PApplet {
         } else if (state==3) {
             drawPanelLogin();
             image(login, 250, 600);
+        }
+        else if (state == 4) {
+            drawGameOver();
         }
     }
 
@@ -334,6 +339,34 @@ public class GUI extends PApplet {
             }
         }
 
+        if (state == 4) {
+
+            // Ragequit
+            if (mouseX > 300 && mouseX < 700 &&
+                    mouseY > 400 && mouseY < 470) {
+
+                println("Ausloggen");
+
+                nickname = "";
+                password = "";
+
+                state = 0;
+            }
+
+            // Neustart
+            if (mouseX > 300 && mouseX < 700 &&
+                    mouseY > 510 && mouseY < 580) {
+
+                println("Neustart");
+
+                steuerung.ss.spiel_Start();
+
+                letzterSchrittZeit = millis();
+
+                state = 1;
+            }
+        }
+
     }
 
     public void keyTyped() {
@@ -357,7 +390,7 @@ public class GUI extends PApplet {
 
             } else {
                 password += key;
-            }
+            } //SOPHIE RAIN AUF DIE 1!!!
         }
         if (register == true && focusedField == 11) {   // Delete Register-Nick
             if (key == BACKSPACE) {
@@ -390,6 +423,43 @@ public class GUI extends PApplet {
         }
 
     }
+    void drawGameOver() {
+
+        gameOver.beginDraw();
+        gameOver.background(40);
+
+        gameOver.textAlign(CENTER, CENTER);
+
+        // Titel
+        gameOver.fill(255, 0, 0);
+        gameOver.textSize(55);
+        gameOver.text("Leider verkackt", 380, 80);
+
+        // Highscore
+        gameOver.fill(255);
+        gameOver.textSize(35);
+        gameOver.text("Highscore: 6767", 380, 170);
+
+        // Ragequit-Button
+        gameOver.fill(180, 40, 40);
+        gameOver.rect(180, 280, 400, 70, 15);
+
+        gameOver.fill(255);
+        gameOver.textSize(30);
+        gameOver.text("Ragequit", 380, 315);
+
+        // Neustart-Button
+        gameOver.fill(40, 180, 40);
+        gameOver.rect(180, 390, 400, 70, 15);
+
+        gameOver.fill(255);
+        gameOver.text("Neustart", 380, 425);
+
+        gameOver.endDraw();
+
+        image(gameOver, 120, 120);
+    }
+
     public static void main(String[] args) {
         PApplet.main("GUI"); // Launch sketch
     }
