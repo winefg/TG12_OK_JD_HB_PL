@@ -1,5 +1,9 @@
+import db.MyJDBC;
 import processing.core.PApplet;
 import processing.core.PGraphics;
+import static db.MyJDBC.*;
+
+
 
 public class GUI extends PApplet {
     Steuerung steuerung;
@@ -293,7 +297,7 @@ public class GUI extends PApplet {
                         mouseY < 780) {
                     passwordActive = true;
                     focusedField = 12;
-                    println("password gedrückt!");
+                    println("passwordRegister gedrückt!");
                 }
             } else if (register == false) {
                 if (mouseX > 510 &&
@@ -336,46 +340,51 @@ public class GUI extends PApplet {
                 }
             } else if (key == ENTER) {
                 focusedField = 2;
-            } else {
+            } else if (key != ' ') {    // löschen Space vor Eingabe
                 nickname += key;
             }
         } else if (focusedField == 2) {
-            if (key == BACKSPACE) {
+            if (key == BACKSPACE) {         // Delete Login-Pass
                 if (password.length() > 0) {
                     password = password.substring(0, password.length() - 1);  // Entfernt das letzte Zeichen.
                 }
             } else if (focusedField == 2 && key == ENTER) {
-                if (password.equals("123")) {
-                    println("JA");
-                }
+               MyJDBC.checkUser(nickname, password);
+
             } else {
                 password += key;
             }
         }
-        if (register == true && focusedField == 11) {
+        if (register == true && focusedField == 11) {   // Delete Register-Nick
             if (key == BACKSPACE) {
                 if (nicknameRegister.length() > 0) {
                     nicknameRegister = nicknameRegister.substring(0, nicknameRegister.length() - 1);  // Entfernt das letzte Zeichen.
                 }
             } else if (key == ENTER) {
                 focusedField = 12;
-            } else {
+            } else if (key != ' ') {     // löschen Space vor Eingabe
                 nicknameRegister += key;
             }
-        } else if (register == true && focusedField == 12) {
+        } else if (register == true && focusedField == 12) {    // Delete Register-Pass
             if (key == BACKSPACE) {
                 if (passwordRegister.length() > 0) {
                     passwordRegister = passwordRegister.substring(0, passwordRegister.length() - 1);  // Entfernt das letzte Zeichen.
                 }
             } else if (register == true && focusedField == 12 && key == ENTER) {
-                /*if (password.equals("123")) {
-                    println("JA");
-                }*/
-                println("Registered!");
+
+                if (MyJDBC.checkUser(nicknameRegister, passwordRegister) == false) {
+                    MyJDBC.register(nicknameRegister, passwordRegister);            // MyJDBC-Register-Funktion
+                    println("Registered:");
+                    println("Nickname:" + nicknameRegister);
+                    println("Password:" + passwordRegister);
+                } else {
+                    println("Please login");
+                }
             } else {
                 passwordRegister += key;
             }
         }
+
     }
     public static void main(String[] args) {
         PApplet.main("GUI"); // Launch sketch
