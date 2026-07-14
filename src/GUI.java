@@ -245,9 +245,10 @@ public class GUI extends PApplet {
 
     public void drawApfel(){
         apfel.beginDraw();
+        apfel.clear();
         apfel.noStroke();
         apfel.fill(213, 83, 47);
-        apfel.circle(20*steuerung.getAktuellesSpiel().getApfel().getX()+20, 20*steuerung.getAktuellesSpiel().getApfel().getY(),38);
+        apfel.circle(40*steuerung.getAktuellesSpiel().getApfel().getX()+20, 40*steuerung.getAktuellesSpiel().getApfel().getY()+20,38);
         apfel.endDraw();
         image(apfel, 120,120);
     }
