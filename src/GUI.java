@@ -43,14 +43,14 @@ public class GUI extends PApplet {
     }
 
     public void draw() {
-        if (state==0){
+        if (state==0){                  //Startbildschirm
             drawStartPage();
-        } else if (state == 1) {
+        } else if (state == 1) {                //Hintergrund zeichnen
             rect(0,0,1000,1000);
             drawPanelSpielfeld();
             drawSpielFeld();
             state=2;
-        } else if (state==2) {
+        } else if (state==2) {          //Spiel konstant zeichnen
             if (millis()-letzterSchrittZeit >= geschwindigkeitMs){
                 letzterSchrittZeit = millis();
                 steuerung.doLaufen();
@@ -59,11 +59,11 @@ public class GUI extends PApplet {
             drawSpielFeld();
             drawSnake();
             drawApfel();
-        } else if (state==3) {
+        } else if (state==3) {          //Login-Bildschirm
             drawPanelLogin();
             image(login, 250, 600);
         }
-        else if (state == 4) {
+        else if (state == 4) {          //Game-Over-Bildschirm
             drawGameOver();
         }
     }
@@ -268,7 +268,8 @@ public class GUI extends PApplet {
         if (mouseX > 400 &&
                 mouseX < 600 &&
                 mouseY > 250 &&
-                mouseY < 310) {
+                mouseY < 310 &&
+                state == 0) {
             println("Start gedrückt!");
             steuerung.ss.spiel_Start();
             steuerung.highscore.setScore(0);
@@ -278,14 +279,16 @@ public class GUI extends PApplet {
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
                 mouseY > 25 &&
-                mouseY < 75) {
+                mouseY < 75 &&
+                state == 2) {
             println("Zurück gedrückt!");
             state = 0;
         }
         if (mouseX > 400 &&
                 mouseX < 600 &&
                 mouseY > 500 &&
-                mouseY < 560) {
+                mouseY < 560 &&
+                state == 0) {
             println("Login gedrückt");
             state = 3;
         }
