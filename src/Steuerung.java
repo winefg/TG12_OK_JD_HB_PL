@@ -36,7 +36,13 @@ public class Steuerung {
         if (aktuellesSpiel != null) {
             aktuellesSpiel.laufen();
 
-            aktuellesSpiel.checkApfel();
+            if (aktuellesSpiel.checkApfel()){
+                dieGUI.geschwindigkeitMs -=2;
+                highscore.setScore(highscore.getScore()+1);
+                if (highscore.getHighscoreRekord()<highscore.getScore()){
+                    highscore.setHighscoreRekord(highscore.getScore());
+                }
+            }
 
             if (aktuellesSpiel.checkVerloren()) {
                 spielBeendet();
@@ -77,7 +83,7 @@ public class Steuerung {
     */
 
     public void anzeigenHighscore() {
-        String hsS = "Highscore: " + Integer.toString(highscore.getScore());
+        String hsS = "Highscore: " + Integer.toString(highscore.getHighscoreRekord());
 
         // Wichtig: Auf dem 'panel'-Objekt zeichnen und Styling setzen
         dieGUI.panel.fill(0); // Schwarze Textfarbe
@@ -85,6 +91,11 @@ public class Steuerung {
         dieGUI.panel.text(hsS, 100, 40); // Text an Position x=100, y=40 schreiben
     }
 
+    public void anzeigenScore(){
+        String score = "Score: " + Integer.toString(highscore.getScore());
+
+        dieGUI.panel.text(score, 100, 90);
+    }
 
     public void spielBeendet() {
         System.out.println("Spiel vorbei");

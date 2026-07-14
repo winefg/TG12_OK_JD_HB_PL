@@ -54,6 +54,7 @@ public class Snake_Original extends SnakeSpiel {
         lastInput = 'r';
         zelleArrayList.clear();
 
+
         kopfzelle = new Zelle(4, 7);
         zelleArrayList.add(kopfzelle);
 
@@ -130,13 +131,15 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setY(newApfelY);
     }
 
-    public void checkApfel(){
+    public Boolean checkApfel(){
         if (apfel.getX() == zelleArrayList.getFirst().getX() && apfel.getY() == zelleArrayList.getFirst().getY()){
             Zelle letzteZelle = zelleArrayList.getLast();
             Zelle neueZelle = new Zelle(letzteZelle.getX(), letzteZelle.getY());
             zelleArrayList.add(neueZelle);
             anzKoerperZellen++;
             generateApfel();
+            return true;
         }
+        return false;
     }
 }

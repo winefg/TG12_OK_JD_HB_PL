@@ -14,7 +14,7 @@ public class GUI extends PApplet {
     PGraphics schlange;
     PGraphics apfel;
     int letzterSchrittZeit = 0;
-    int geschwindigkeitMs =400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
+    int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
     public void settings() {
         size(1000, 1000);
@@ -53,6 +53,7 @@ public class GUI extends PApplet {
                 letzterSchrittZeit = millis();
                 steuerung.doLaufen();
             }
+            drawPanelSpielfeld();
             drawSpielFeld();
             drawSnake();
             drawApfel();
@@ -185,8 +186,9 @@ public class GUI extends PApplet {
         // Ruft die Steuerung auf, die den Highscore auf das Panel zeichnet
         steuerung.anzeigenHighscore();
 
+        steuerung.anzeigenScore();
         // Normaler Score (etwas nach unten versetzt bei y=90, damit es nicht kollidiert)
-        panel.text("Score: 0", 100, 90);
+        //panel.text("Score: 0", 100, 90);
 
         // Button Zurück
         panel.fill(100);
@@ -264,6 +266,8 @@ public class GUI extends PApplet {
                 mouseY < 310) {
             println("Start gedrückt!");
             steuerung.ss.spiel_Start();
+            steuerung.highscore.setScore(0);
+            geschwindigkeitMs = 400;
             state = 1;
         }
         if (mouseX > width - 170 &&
