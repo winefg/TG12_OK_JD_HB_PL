@@ -7,7 +7,7 @@ public class MyJDBC {
 
     public static boolean register(String nickname, String password) {
         try {
-            if(!checkUser(nickname)) {
+            if(!checkUser(nickname, password)) {
                 Connection connection = DriverManager.getConnection(CommonConstants.DB_URL,
                         CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
 
@@ -29,26 +29,44 @@ public class MyJDBC {
         return false;
     }
 
-    public static boolean checkUser(String nickname){
+    public static boolean checkUser(String nickname, String password){
+
+        nickname = nickname.trim();
+        password = password.trim();
+
         try{
             Connection connection = DriverManager.getConnection(CommonConstants.DB_URL,
                     CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
 
             PreparedStatement checkUserExists = connection.prepareStatement(
                     "SELECT * FROM " + CommonConstants.DB_USERS_TABLE_NAME +
-                            " WHERE NICKNAME = ?"
+                            " WHERE NICKNAME = ? AND PASSWORD = ?"
             );
             checkUserExists.setString(1, nickname);
+            checkUserExists.setString(2, password);
+
+            System.out.println("Searching:");
+            System.out.println("Nickname: " + nickname);
+            System.out.println("Password: " + password);
+
+           /* System.out.println(                                                   überprüfen
+                    "SELECT * FROM " + CommonConstants.DB_USERS_TABLE_NAME +
+                            " WHERE nickname = '" + nickname +
+                            "' AND password = '" + password + "'"
+            ); */
 
             ResultSet resultSet = checkUserExists.executeQuery();
-
-            if (!resultSet.isBeforeFirst()){
-                return false;
+            if(resultSet.next()){
+                System.out.println("USER FOUND!");
+                return true;
+            } else {
+                System.out.println("USER NOT FOUND!");
             }
-        } catch (SQLException e){
+        } catch(SQLException e){
+
             e.printStackTrace();
         }
-        return true;
+        return false;
     }
 
 
