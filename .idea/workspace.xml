@@ -7,6 +7,7 @@
     <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Highscore &amp; Aktueller Score">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

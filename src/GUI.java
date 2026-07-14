@@ -78,7 +78,7 @@ public class GUI extends PApplet {
         spielFeld.background(70, 84, 40); //immer die normalen Funktionen von Processing verwenden + Name der Variable davor
 
         int cellSize = 40;
-        int gridSize = 19;
+        int gridSize = 19; //Muss mit Spielfeld übereinstimmen
 
         int fieldSize = gridSize * cellSize;
 
@@ -246,13 +246,17 @@ public class GUI extends PApplet {
         schlange.beginDraw();
         schlange.clear();
         schlange.noStroke();
-        schlange.circle(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20, 36);
-        schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX())),40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+2, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()), 36);
-        schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+2, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY())), 36, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()));
-        for (int i = 1; i < steuerung.getAktuellesSpiel().getZelleArrayList().size(); i++) {
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36); //Quadrat 36x36 Körper
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getX() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) * 20, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 4, 36);
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getY() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) * 20, 36, 4);
+        schlange.fill(79, 113, 223);
+        for (int i = 0; i < steuerung.getAktuellesSpiel().getZelleArrayList().size(); i++) {
+            if (i >= 1){
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36); //Quadrat 36x36 Körper
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getX() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) * 20, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 4, 36);
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getY() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) * 20, 36, 4);
+            } else {
+                schlange.circle(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20, 36);
+                schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX())),40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+2, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()), 36);
+                schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+2, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY())), 36, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()));
+            }
         }
         schlange.endDraw();
         image(schlange, 120,120);
