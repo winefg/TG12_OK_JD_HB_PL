@@ -395,7 +395,7 @@ public class GUI extends PApplet {
                 println("Neustart");
 
                 steuerung.ss.spiel_Start();
-
+                steuerung.highscore.setScore(0);
                 letzterSchrittZeit = millis();
 
                 state = 1;
