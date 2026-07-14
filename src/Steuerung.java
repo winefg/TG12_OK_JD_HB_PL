@@ -39,9 +39,6 @@ public class Steuerung {
             if (aktuellesSpiel.checkApfel()){
                 dieGUI.geschwindigkeitMs -=2;
                 highscore.setScore(highscore.getScore()+1);
-                if (highscore.getHighscoreRekord()<highscore.getScore()){
-                    highscore.setHighscoreRekord(highscore.getScore());
-                }
             }
 
             if (aktuellesSpiel.checkVerloren()) {
@@ -60,9 +57,15 @@ public class Steuerung {
 
 
     public void addSpiel(SnakeSpiel spiel) {
+        snakeSpiel.clear();
         snakeSpiel.add(spiel);
         anzSpiele++;
-        highscore = new Highscore(aktSpielerID, aktSpielID, MyJDBC.getScoreAusDatenbank(aktSpielerID));
+        int alterHighscore = MyJDBC.getHighscore(aktSpielerID);     // Highscore aus DB nehmen
+        System.out.println("Loaded Highscore from DB: " + alterHighscore);
+        highscore = new Highscore(
+                aktSpielerID,
+                aktSpielID,
+                alterHighscore);
     }
 
   /*  private int getIndexHighscore(int spielerID, int spielID) {
@@ -83,6 +86,9 @@ public class Steuerung {
     */
 
     public void anzeigenHighscore() {
+        if (highscore == null) {
+            return;
+        }
         String hsS = "Highscore: " + Integer.toString(highscore.getHighscoreRekord());
 
         // Wichtig: Auf dem 'panel'-Objekt zeichnen und Styling setzen
@@ -98,10 +104,26 @@ public class Steuerung {
     }
 
     public void spielBeendet() {
+            // Überprüfen, was in Highscore gibt
+        System.out.println("Player ID: " + highscore.getSpielerID());
+        System.out.println("Current score: " + highscore.getScore());
+        System.out.println("Old highscore: " + highscore.getHighscoreRekord());
+
+        if (highscore.getScore() > highscore.getHighscoreRekord()) {
+            MyJDBC.updateHighscore(     // neuer Highscore wenn Score > alter Highscore
+                    highscore.getSpielerID(),
+                    highscore.getScore()
+            );
+            // update Highscore in Java-Programm
+            highscore.setHighscoreRekord(highscore.getScore());
+        }
         System.out.println("Spiel vorbei");
         dieGUI.state = 0;
     }
 
+    public void setAktSpielerID(int id){
+        this.aktSpielerID = id;
+    }
 }
 
 

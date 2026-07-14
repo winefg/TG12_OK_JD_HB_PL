@@ -4,6 +4,8 @@
       <root url="jar://$PROJECT_DIR$/../TG12_OK_JD_HB_PL/TG12_OK_JD_HB_PL-main/core-4.5.2.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../TG12_OK_JD_HB_PL/TG12_OK_JD_HB_PL-main/core-4.5.2.jar!/" />
+    </SOURCES>
   </library>
 </component>

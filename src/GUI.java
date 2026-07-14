@@ -4,9 +4,9 @@ import processing.core.PGraphics;
 import static db.MyJDBC.*;
 
 
-
 public class GUI extends PApplet {
     Steuerung steuerung;
+    Highscore highscore;
     int state = 0; // 0 for first screen, 1 for second screen
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
     PGraphics panel;
@@ -25,8 +25,6 @@ public class GUI extends PApplet {
         steuerung = new Steuerung(this);
         spielFeld = createGraphics(760, 760); //Größe in SETUP zuweisen
         panel = createGraphics(1000, 1000);
-
-        steuerung.addSpiel(steuerung.ss);
         login = createGraphics(500, 350);
         schlange = createGraphics(760, 760);
         apfel = createGraphics(760, 760);
@@ -353,8 +351,14 @@ public class GUI extends PApplet {
                     password = password.substring(0, password.length() - 1);  // Entfernt das letzte Zeichen.
                 }
             } else if (focusedField == 2 && key == ENTER) {
-               MyJDBC.checkUser(nickname, password);
-
+               int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
+                if (id != -1){
+                    steuerung.setAktSpielerID(id);
+                    steuerung.addSpiel(steuerung.ss);
+                    state = 0;                                  // zum Start
+                } else {
+                    println("Wrong login");
+                }
             } else {
                 password += key;
             }
@@ -375,13 +379,15 @@ public class GUI extends PApplet {
                     passwordRegister = passwordRegister.substring(0, passwordRegister.length() - 1);  // Entfernt das letzte Zeichen.
                 }
             } else if (register == true && focusedField == 12 && key == ENTER) {
-
-                if (MyJDBC.checkUser(nicknameRegister, passwordRegister) == false) {
-                    MyJDBC.register(nicknameRegister, passwordRegister);            // MyJDBC-Register-Funktion
+                int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
+                if (id != -1) {
+                    steuerung.setAktSpielerID(id);            // id setzen
+                    steuerung.addSpiel(steuerung.ss);
                     println("Registered:");
                     println("Nickname:" + nicknameRegister);
                     println("Password:" + passwordRegister);
                 } else {
+                    println("User already exists");
                     println("Please login");
                 }
             } else {
