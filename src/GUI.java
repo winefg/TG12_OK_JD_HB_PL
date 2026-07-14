@@ -474,4 +474,5 @@ public class GUI extends PApplet {
     public static void main(String[] args) {
         PApplet.main("GUI"); // Launch sketch
     }
+
 }
