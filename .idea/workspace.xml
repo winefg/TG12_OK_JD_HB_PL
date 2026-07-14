@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Apfel anzeigen fertig stellen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Apfel anzeigen fertig stellen" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +25,11 @@
     &quot;accountId&quot;: &quot;d7375bef-a886-489c-8d06-dc950390f19e&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_10_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_4_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_8_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="0.0" />
