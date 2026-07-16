@@ -43,7 +43,7 @@ public class Steuerung {
         return (Snake_Original) snakeSpiel.getFirst();
     }
 
-    //Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);---------------------------------------------------!!!!
+    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);//---------------------------------------------------!!!!
     public void doLaufen() {
         Snake_Original aktuellesSpiel = getAktuellesSpiel();
         if (aktuellesSpiel != null) {
