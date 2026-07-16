@@ -345,7 +345,7 @@ public class GUI extends PApplet {
 
         if (state == 4) {
 
-            // Ragequit
+            // ragequit
             if (mouseX > 300 && mouseX < 700 &&
                     mouseY > 400 && mouseY < 470) {
 
@@ -357,7 +357,7 @@ public class GUI extends PApplet {
                 state = 0;
             }
 
-            // Neustart
+            // neustart
             if (mouseX > 300 && mouseX < 700 &&
                     mouseY > 510 && mouseY < 580) {
 
