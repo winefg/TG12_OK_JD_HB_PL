@@ -6,7 +6,6 @@ import static db.MyJDBC.*;
 
 
 public class GUI extends PApplet {
-    boolean adminMode = false;
     Steuerung steuerung;
     Highscore highscore;
     int state = 0; // 0 for first screen, 1 for second screen
@@ -67,11 +66,11 @@ public class GUI extends PApplet {
 
     @Override
     public void keyPressed() {
-        // SHIFT + G -> Spiel ohne Login starten (für Admin)
+        // SHIFT + G - Spiel ohne Login starten (für Admin)
         if (keyEvent.isShiftDown() && (key == 'g' || key == 'G')) {
             loginSucces = true;
             nickname = "ADMIN";
-            //steuerung.startAsAdmin();
+            steuerung.startAsAdmin();
             steuerung.getAktuellesSpiel().spiel_Start();
             state = 1;
         }

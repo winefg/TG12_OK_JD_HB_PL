@@ -127,4 +127,21 @@ public class Steuerung {
         System.out.println("Spiel vorbei");
         dieGUI.state = state;
     }
+
+
+
+    public void startAsAdmin() {
+
+        snakeSpiel.clear();
+
+        Snake_Original spiel = new Snake_Original(
+                "ADMIN",      // Spieler ID (ADMIN)
+                0,      // Spiel ID
+                0       // Startscore
+        );
+        snakeSpiel.add(spiel);
+        highscore = new Highscore();
+        highscore.setScore(0);
+        highscore.setHighscoreRekord(0);
+    }
 }
