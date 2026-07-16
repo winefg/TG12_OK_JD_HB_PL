@@ -24,7 +24,6 @@ loop Für jeden Spieler
     Spieler -->> Steuerung: password
     deactivate Spieler
     
-    
 opt Spieler gefunden
     Steuerung -> Spieler: setAktiv(true)
     activate Spieler
@@ -37,6 +36,7 @@ opt Spieler gefunden
     deactivate GUI
 end
 end
+
 opt Spieler nicht gefunden
     Steuerung -> GUI: setAktiv(false)
     activate GUI
