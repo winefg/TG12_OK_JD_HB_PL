@@ -1,48 +1,44 @@
 title Spieler anmelden
 
 actor Benutzer
-participant Steuerung
-participant Spieler
 participant GUI
+participant MyJDBC
+participant Datenbank
+participant Steuerung
 
 activate Benutzer
+Benutzer->GUI:keyTyped()
+activate GUI
 
-Benutzer -> Steuerung: login(name: String, password: String)
+opt focusedField == 2 && key == ENTER
 
+GUI->MyJDBC:login(nickname, password)
+activate MyJDBC
+MyJDBC->Datenbank:executeQuery()
+activate Datenbank
+MyJDBC<<--Datenbank:executeQuery()
+deactivate Datenbank
+GUI<<--MyJDBC:login(nickname, password):id
+deactivate MyJDBC
+
+alt id != -1
+GUI->Steuerung:setAktSpielerID(id)
 activate Steuerung
-
-loop Für jeden Spieler
-    Steuerung -> Spieler: getName()
-    activate Spieler
-    
-    Spieler -->> Steuerung: name
-    deactivate Spieler
-    
-    Steuerung -> Spieler: getPassword()
-    activate Spieler
-    
-    Spieler -->> Steuerung: password
-    deactivate Spieler
-    
-opt Spieler gefunden
-    Steuerung -> Spieler: setAktiv(true)
-    activate Spieler
-    Steuerung<<--Spieler:
-    deactivate Spieler
-    Steuerung -> GUI: Login erfolgreich
-    activate GUI
-    GUI->> Benutzer: Spiel startet
-    GUI-->>Steuerung:
-    deactivate GUI
+GUI<<--Steuerung:setAktSpielerID(id)
+deactivate Steuerung
+GUI->Steuerung:getAktuellesSpiel()
+activate Steuerung
+GUI<<--Steuerung:getAktuellesSpiel():snakeSpiel
+deactivate Steuerung
+GUI->Steuerung:addSpiel(snakeSpiel)
+activate Steuerung
+GUI<<--Steuerung:addSpiel(snakeSpiel)
+deactivate Steuerung
+Benutzer<<--GUI:Login erfolgreich
+deactivate GUI
+else
+activate GUI
+Benutzer<<--GUI:println("Wrong login")
+deactivate GUI
 end
-end
-
-opt Spieler nicht gefunden
-    Steuerung -> GUI: setAktiv(false)
-    activate GUI
-    GUI->> Benutzer: "Spieler existiert nicht"
-    GUI-->>Steuerung:
-    deactivate GUI
-    Steuerung-->>Benutzer:
-    deactivate Steuerung
 end
