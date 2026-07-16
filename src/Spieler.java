@@ -7,7 +7,6 @@ public class Spieler {
     public boolean checkLogin(String name, String passwort) {
         boolean richtigerLogin = false;
         richtigerLogin = this.name.equals(name) && this.passwort.equals(passwort);
-
         return richtigerLogin;
     }
 

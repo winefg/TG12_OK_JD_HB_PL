@@ -11,8 +11,38 @@ public class Snake_Original extends SnakeSpiel {
     private Aepfel apfel;
     private char lastInput;
 
+
+    public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
+        super(name, schwierigkeit);
+        this.anzKoerperZellen = anzKoerperZellen;
+    }
+
+    public ArrayList<Zelle> getZelleArrayList() {
+        return zelleArrayList;
+    }
+
+    public Aepfel getApfel() {
+        return apfel;
+    }
+
     public Spielfeld getSpielfeld() {
         return spielfeld;
+    }
+
+    public void spiel_Start(){
+        input = 'r';
+        lastInput = 'r';
+        zelleArrayList.clear();
+
+
+        kopfzelle = new Zelle(4, 7);
+        zelleArrayList.add(kopfzelle);
+
+        Zelle koerperZelle1 = new Zelle(3,7);
+        Zelle koerperZelle2 = new Zelle(2,7);
+        zelleArrayList.add(koerperZelle1);
+        zelleArrayList.add(koerperZelle2);
+        apfel = new Aepfel(12, 7);
     }
 
     // Verarbeitet den Tastendruck direkt aus Processing
@@ -35,35 +65,6 @@ public class Snake_Original extends SnakeSpiel {
                 if (lastInput != 'l') input = 'r';
                 break;
         }
-    }
-
-    public ArrayList<Zelle> getZelleArrayList() {
-        return zelleArrayList;
-    }
-
-    public Aepfel getApfel() {
-        return apfel;
-    }
-
-    public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {
-        super(name, schwierigkeit);
-        this.anzKoerperZellen = anzKoerperZellen;
-    }
-
-    public void spiel_Start(){
-        input = 'r';
-        lastInput = 'r';
-        zelleArrayList.clear();
-
-
-        kopfzelle = new Zelle(4, 7);
-        zelleArrayList.add(kopfzelle);
-
-        Zelle koerperZelle1 = new Zelle(3,7);
-        Zelle koerperZelle2 = new Zelle(2,7);
-        zelleArrayList.add(koerperZelle1);
-        zelleArrayList.add(koerperZelle2);
-        apfel = new Aepfel(12, 7);
     }
 
     public void laufen(){

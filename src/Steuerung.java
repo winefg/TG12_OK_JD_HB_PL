@@ -14,7 +14,6 @@ public class Steuerung {
     public Steuerung(GUI dieGUI) {
         snakeSpiel = new ArrayList<>();
         this.dieGUI = dieGUI;
-
     }
 
     public void setAktSpielerID(int id){
@@ -33,7 +32,6 @@ public class Steuerung {
             return 0;
         }
         return highscore.getScore();
-
     }
 
     public Snake_Original getAktuellesSpiel() {
@@ -43,17 +41,14 @@ public class Steuerung {
         return (Snake_Original) snakeSpiel.getFirst();
     }
 
-    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);//--------------------------------------------------!!!!
     public void doLaufen() {
         Snake_Original aktuellesSpiel = getAktuellesSpiel();
         if (aktuellesSpiel != null) {
             aktuellesSpiel.laufen();
-
             if (aktuellesSpiel.checkApfel()){
                 dieGUI.geschwindigkeitMs -=2;
                 highscore.setScore(highscore.getScore()+1);
             }
-
             if (aktuellesSpiel.checkVerloren()) {
                 spielBeendet(4);
             }
@@ -89,7 +84,6 @@ public class Steuerung {
         }
         String hsS = "Highscore: " + Integer.toString(highscore.getHighscoreRekord());
 
-        // Wichtig: Auf dem 'panel'-Objekt zeichnen und Styling setzen
         dieGUI.panel.fill(0); // Schwarze Textfarbe
         dieGUI.panel.textAlign(dieGUI.CENTER); // Zentriert (oder LEFT, je nach Wunsch)
         dieGUI.panel.text(hsS, 100, 40); // Text an Position x=100, y=40 schreiben
@@ -119,5 +113,3 @@ public class Steuerung {
         dieGUI.state = state;
     }
 }
-
-

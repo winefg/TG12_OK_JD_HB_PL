@@ -5,9 +5,9 @@ import static db.MyJDBC.*;
 
 
 
+
 public class GUI extends PApplet {
     Steuerung steuerung;
-    Highscore highscore;
     int state = 0; // 0 for first screen, 1 for second screen
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
     PGraphics panel;
@@ -17,6 +17,19 @@ public class GUI extends PApplet {
     PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
+    int focusedField = 0;
+
+    String nickname = " ";
+    boolean nicknameActive = false;
+    String nicknameRegister = "";
+
+    String password = "";
+    boolean passwordActive = false;
+    String passwordRegister = "";
+
+    boolean register = false;
+    boolean loginSucces = false;
+
 
     public void settings() {
         size(1000, 1000);
@@ -111,18 +124,6 @@ public class GUI extends PApplet {
         image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Uebergeordneten Spielfeld
     }
 
-    int focusedField = 0;
-
-    String nickname = " ";
-    boolean nicknameActive = false;
-    String nicknameRegister = "";
-
-    String password = "";
-    boolean passwordActive = false;
-    String passwordRegister = "";
-
-    boolean register = false;
-    boolean loginSucces = false;
 
     void drawPanelLogin() {
         login.beginDraw();
@@ -143,8 +144,6 @@ public class GUI extends PApplet {
         } else {
             login.text(nickname, 270, 70);
         }
-
-
 
 
         // Password Text
@@ -176,10 +175,7 @@ public class GUI extends PApplet {
         login.textSize(15);
         login.text("Not registered yet?", 190, 215);
         login.endDraw();
-
-
     }
-
 
     void drawPanelSpielfeld(){
         // Panel-Zeichnung starten
@@ -233,7 +229,6 @@ public class GUI extends PApplet {
         textAlign(CENTER);
         textSize(30);
         text("LOGIN", 500, 540);
-
     }
 
     public void chooseStroke() {
@@ -277,7 +272,7 @@ public class GUI extends PApplet {
                 mouseY < 310 &&
                 state == 0) {
             println("Start gedrückt!");
-            steuerung.ss.spiel_Start();
+            steuerung.getAktuellesSpiel().spiel_Start();
             steuerung.highscore.setScore(0);
             geschwindigkeitMs = 400;
             state = 1;
@@ -368,14 +363,13 @@ public class GUI extends PApplet {
 
                 println("Neustart");
 
-                steuerung.ss.spiel_Start();
+                steuerung.getAktuellesSpiel().spiel_Start();
                 steuerung.highscore.setScore(0);
                 letzterSchrittZeit = millis();
 
                 state = 1;
             }
         }
-
     }
 
     public void keyTyped() {
@@ -398,7 +392,7 @@ public class GUI extends PApplet {
                int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
                 if (id != -1){
                     steuerung.setAktSpielerID(id);
-                    steuerung.addSpiel(steuerung.ss);
+                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
                     state = 0;                                  // zum Start
                 } else {
                     println("Wrong login");
@@ -426,7 +420,7 @@ public class GUI extends PApplet {
                 int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
                 if (id != -1) {
                     steuerung.setAktSpielerID(id);            // id setzen
-                    steuerung.addSpiel(steuerung.ss);
+                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
                     println("Registered:");
                     println("Nickname:" + nicknameRegister);
                     println("Password:" + passwordRegister);
@@ -438,8 +432,8 @@ public class GUI extends PApplet {
                 passwordRegister += key;
             }
         }
-
     }
+
     void drawGameOver() {
 
         gameOver.beginDraw();
@@ -487,4 +481,3 @@ public class GUI extends PApplet {
         PApplet.main("GUI"); // Launch sketch
     }
 }
-
