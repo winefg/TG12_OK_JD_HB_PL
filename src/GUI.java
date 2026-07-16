@@ -438,15 +438,15 @@ public class GUI extends PApplet {
                 mouseY > 250 &&
                 mouseY < 310 &&
                 state == 0) {
-            if (loginSucces) {
-                println("Start gedrückt!");
-                steuerung.getAktuellesSpiel().spiel_Start();
-                steuerung.highscore.setScore(0);
-                geschwindigkeitMs = 400;
-                state = 1;
-            } else {
-                pleaseText = !pleaseText;
-            }
+                if (loginSucces) {
+                    println("Start gedrückt!");
+                    steuerung.getAktuellesSpiel().spiel_Start();
+                    steuerung.highscore.setScore(0);
+                    geschwindigkeitMs = 400;
+                    state = 1;
+                } else {
+                    pleaseText = !pleaseText;
+                }
          }
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&

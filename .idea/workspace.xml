@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login">
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
@@ -32,9 +29,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_10_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_4_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_8_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_1_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_2_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp__Steuerung.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
@@ -202,7 +199,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784055498290</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login">
+      <option name="closed" value="true" />
+      <created>1784225918075</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1784225918075</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +221,7 @@
     <MESSAGE value="Score auf 0 beim &quot;Neustart&quot;" />
     <MESSAGE value="Highscore &amp; Aktueller Score in gameOver()" />
     <MESSAGE value="Highscore &amp; Aktueller Score" />
-    <option name="LAST_COMMIT_MESSAGE" value="Highscore &amp; Aktueller Score" />
+    <MESSAGE value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
   </component>
 </project>
