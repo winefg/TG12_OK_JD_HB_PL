@@ -68,7 +68,7 @@ public class GUI extends PApplet {
             drawGameOver();
         }
         else if (state == 5) {
-            drawWinScreen();
+            drawGameOver();
         }
     }
 
@@ -272,34 +272,6 @@ public class GUI extends PApplet {
         image(apfel, 120,120);
     }
 
-    public void drawWinScreen(){
-        endScreen.beginDraw();
-        endScreen.background(40);
-        endScreen.fill(0, 1);
-        endScreen.rect(0,0,1000, 1000);
-        endScreen.textAlign(CENTER, CENTER);
-        endScreen.fill(255);
-        endScreen.textSize(55);
-        endScreen.text("GEWONNEN", 500,100);
-
-        endScreen.textSize(35);
-        endScreen.text("Highscore: ", 500, 290); //Oleksandr muss hier mit Datenbank carrien
-
-        endScreen.fill(180, 40, 40);
-        endScreen.rect(300, 400, 400, 70, 15);
-        endScreen.fill(255);
-        endScreen.textSize(30);
-        endScreen.text("Ausloggen", 500, 435);
-
-        endScreen.fill(40, 180, 40);
-        endScreen.rect(300, 510, 400, 70, 15);
-        endScreen.fill(255);
-        endScreen.text("Neustart", 500, 545); //Konflikt in der Detektion mit Login vom Startpanel
-
-        endScreen.endDraw();
-        image(endScreen, 0,0);
-    }
-
     public void mousePressed() {
         if (mouseX > 400 &&
                 mouseX < 600 &&
@@ -478,9 +450,14 @@ public class GUI extends PApplet {
         gameOver.textAlign(CENTER, CENTER);
 
         // Titel
-        gameOver.fill(255, 0, 0);
         gameOver.textSize(55);
-        gameOver.text("Leider verkackt", 380, 80);
+        if (state == 4) {
+            gameOver.fill(255, 0, 0);
+            gameOver.text("Leider verkackt", 380, 80);
+        }else if (state == 5) {
+            gameOver.fill(255, 255, 255);
+            gameOver.text("Gewonnen", 380, 80);
+        }
 
         // Highscore
         gameOver.fill(255);

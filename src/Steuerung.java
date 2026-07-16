@@ -42,10 +42,10 @@ public class Steuerung {
             }
 
             if (aktuellesSpiel.checkVerloren()) {
-                spielBeendet();
+                spielBeendet(4);
             }
             if (aktuellesSpiel.getSpielfeld().getHoehe()*aktuellesSpiel.getSpielfeld().getBreite()==aktuellesSpiel.getZelleArrayList().size()){
-                spielGewonnen();
+                spielBeendet(5);
             }
         }
     }
@@ -106,7 +106,7 @@ public class Steuerung {
         dieGUI.panel.text(score, 100, 90);
     }
 
-    public void spielBeendet() {
+    public void spielBeendet(int state) {
             // Überprüfen, was in Highscore gibt
         System.out.println("Player ID: " + highscore.getSpielerID());
         System.out.println("Current score: " + highscore.getScore());
@@ -121,12 +121,7 @@ public class Steuerung {
             highscore.setHighscoreRekord(highscore.getScore());
         }
         System.out.println("Spiel vorbei");
-        dieGUI.state = 4;
-    }
-
-    public void spielGewonnen() {
-        System.out.println("Spiel gewonnen");
-        dieGUI.state = 5;
+        dieGUI.state = state;
     }
 
     public void setAktSpielerID(int id){
