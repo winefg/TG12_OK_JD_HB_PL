@@ -14,7 +14,6 @@ public class GUI extends PApplet {
     PGraphics login;
     PGraphics schlange;
     PGraphics apfel;
-    PGraphics endScreen;
     PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
@@ -32,7 +31,6 @@ public class GUI extends PApplet {
         schlange = createGraphics(760, 760);
         apfel = createGraphics(760, 760);
         gameOver = createGraphics(760, 760);
-        endScreen = createGraphics(1000, 1000);
     }
 
     @Override
