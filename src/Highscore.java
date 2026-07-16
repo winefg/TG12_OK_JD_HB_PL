@@ -4,6 +4,7 @@ public class Highscore {
     private int score;
     private int highscoreRekord;
 
+
     public Highscore(int spielerID, int spielID, int highscoreRekord) {
         this.spielerID = spielerID;
         this.spielID = spielID;

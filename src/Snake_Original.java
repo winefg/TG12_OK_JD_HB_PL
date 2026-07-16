@@ -2,14 +2,15 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Snake_Original extends SnakeSpiel {
-    private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
     private int anzKoerperZellen;
-    private Spielfeld spielfeld = new Spielfeld(17, 17);
     private char input;
-    private Random random = new Random();
-    private Zelle kopfzelle;
-    private Aepfel apfel;
     private char lastInput;
+
+    private ArrayList<Zelle> zelleArrayList = new ArrayList<>();
+    private Zelle kopfzelle;
+    private Spielfeld spielfeld = new Spielfeld(17, 17);
+    private Aepfel apfel;
+    private Random random = new Random();
 
 
     public Snake_Original(String name, int schwierigkeit, int anzKoerperZellen) {

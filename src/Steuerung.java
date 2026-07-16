@@ -7,9 +7,9 @@ public class Steuerung {
     private int aktSpielID;
 
     private ArrayList<SnakeSpiel> snakeSpiel;
-
     public Highscore highscore;
     private GUI dieGUI;
+
 
     public Steuerung(GUI dieGUI) {
         snakeSpiel = new ArrayList<>();

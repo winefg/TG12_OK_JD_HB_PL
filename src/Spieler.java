@@ -4,6 +4,7 @@ public class Spieler {
     private String passwort;
     private static int spielerNr = 0;
 
+
     public boolean checkLogin(String name, String passwort) {
         boolean richtigerLogin = false;
         richtigerLogin = this.name.equals(name) && this.passwort.equals(passwort);
