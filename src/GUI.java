@@ -186,9 +186,7 @@ public class GUI extends PApplet {
         panel.textSize(30);
         panel.fill(0);
 
-        // Ruft die Steuerung auf, die den Highscore auf das Panel zeichnet
         steuerung.anzeigenHighscore();
-
         steuerung.anzeigenScore();
         // Normaler Score (etwas nach unten versetzt bei y=90, damit es nicht kollidiert)
         //panel.text("Score: 0", 100, 90);
@@ -350,19 +348,13 @@ public class GUI extends PApplet {
                     mouseY > 400 && mouseY < 470) {
 
                 println("Ausloggen");
-
-                nickname = "";
-                password = "";
-
                 state = 0;
             }
 
             // neustart
-            if (mouseX > 300 && mouseX < 700 &&
-                    mouseY > 510 && mouseY < 580) {
+            if (mouseX > 300 && mouseX < 700 && mouseY > 510 && mouseY < 580) {
 
                 println("Neustart");
-
                 steuerung.getAktuellesSpiel().spiel_Start();
                 steuerung.highscore.setScore(0);
                 letzterSchrittZeit = millis();
