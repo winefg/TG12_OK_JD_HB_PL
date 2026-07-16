@@ -1,22 +1,16 @@
-//Erstellt mit https://sequencediagram.org
-
-
 title Highscore anzeigen
 
-actor Benutzer
 participant GUI
 participant Steuerung
 participant Highscore
 
-activate Benutzer
 activate GUI
-Benutzer -> GUI: Spiel starten
 GUI -> Steuerung: anzeigenHighscore()
 activate Steuerung
 
 Steuerung -> Highscore: getHighscore()
 activate Highscore
-Highscore --> Steuerung: int highscore
+Highscore -->> Steuerung: int highscore
 deactivate Highscore
 
 Steuerung ->Steuerung:Integer.toString(highscore)
@@ -41,4 +35,3 @@ deactivate GUI
 
 Steuerung -->> GUI: 
 deactivate Steuerung
-GUI -->> Benutzer: //Highscore wird angezeigt
