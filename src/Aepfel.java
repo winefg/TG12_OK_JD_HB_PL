@@ -7,8 +7,6 @@ public class Aepfel {
         this.y = y;
     }
 
-
-
     public int getX() {
         return x;
     }

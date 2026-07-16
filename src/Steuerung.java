@@ -1,25 +1,38 @@
 import db.MyJDBC;
-
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
 
 public class Steuerung {
-    private int anzSpieler;
     private int anzSpiele;
-    private int anzHighscores;
     private int aktSpielerID;
     private int aktSpielID;
 
     private ArrayList<SnakeSpiel> snakeSpiel;
 
-    Highscore highscore;
-
-    //GUI-Zeug
+    public Highscore highscore;
     private GUI dieGUI;
 
     public Steuerung(GUI dieGUI) {
         snakeSpiel = new ArrayList<>();
         this.dieGUI = dieGUI;
+
+    }
+
+    public void setAktSpielerID(int id){
+        this.aktSpielerID = id;
+    }
+
+    public int getHighscore(){
+        if (highscore == null) {
+            return 0;
+        }
+        return highscore.getHighscoreRekord();
+    }
+
+    public int getScore() {
+        if (highscore == null) {
+            return 0;
+        }
+        return highscore.getScore();
 
     }
 
@@ -30,7 +43,7 @@ public class Steuerung {
         return (Snake_Original) snakeSpiel.getFirst();
     }
 
-    Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);
+    //Snake_Original ss = new Snake_Original("ADFPasi", 67, 2);---------------------------------------------------!!!!
     public void doLaufen() {
         Snake_Original aktuellesSpiel = getAktuellesSpiel();
         if (aktuellesSpiel != null) {
@@ -58,7 +71,6 @@ public class Steuerung {
         }
     }
 
-
     public void addSpiel(SnakeSpiel spiel) {
         snakeSpiel.clear();
         snakeSpiel.add(spiel);
@@ -70,23 +82,6 @@ public class Steuerung {
                 aktSpielID,
                 alterHighscore);
     }
-
-  /*  private int getIndexHighscore(int spielerID, int spielID) {
-
-        for (int i = 0; i < highscore.size(); i++) {
-
-            Highscore hs = highscore.get(i);
-
-            if (hs.getSpielerID() == spielerID &&
-                    hs.getSpielID() == spielID) {
-
-                return i;
-            }
-        }
-
-        return -1;
-    }
-    */
 
     public void anzeigenHighscore() {
         if (highscore == null) {
@@ -122,25 +117,6 @@ public class Steuerung {
         }
         System.out.println("Spiel vorbei");
         dieGUI.state = state;
-    }
-
-    public void setAktSpielerID(int id){
-        this.aktSpielerID = id;
-    }
-
-    public int getHighscore(){
-        if (highscore == null) {
-            return 0;
-        }
-        return highscore.getHighscoreRekord();
-    }
-
-    public int getScore() {
-        if (highscore == null) {
-            return 0;
-        }
-        return highscore.getScore();
-
     }
 }
 

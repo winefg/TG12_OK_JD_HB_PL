@@ -1,5 +1,4 @@
 public class Zelle {
-
     private int x;
     private int y;
 

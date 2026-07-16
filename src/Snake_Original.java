@@ -1,7 +1,4 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Snake_Original extends SnakeSpiel {
@@ -13,6 +10,10 @@ public class Snake_Original extends SnakeSpiel {
     private Zelle kopfzelle;
     private Aepfel apfel;
     private char lastInput;
+
+    public Spielfeld getSpielfeld() {
+        return spielfeld;
+    }
 
     // Verarbeitet den Tastendruck direkt aus Processing
     public void verarbeiteTastendruck(int keyCode) {
@@ -141,9 +142,5 @@ public class Snake_Original extends SnakeSpiel {
             return true;
         }
         return false;
-    }
-
-    public Spielfeld getSpielfeld() {
-        return spielfeld;
     }
 }
