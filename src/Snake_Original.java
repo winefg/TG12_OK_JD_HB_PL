@@ -22,6 +22,10 @@ public class Snake_Original extends SnakeSpiel {
         return zelleArrayList;
     }
 
+    public int  getAnzKoerperZellen(){
+        return anzKoerperZellen;
+    }
+
     public Aepfel getApfel() {
         return apfel;
     }

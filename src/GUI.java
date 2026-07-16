@@ -3,21 +3,20 @@ import processing.core.PApplet;
 import processing.core.PGraphics;
 import static db.MyJDBC.*;
 
-
-
-
 public class GUI extends PApplet {
     Steuerung steuerung;
-    int state = 0; // 0 for first screen, 1 for second screen
+
     PGraphics spielFeld; //Variable fürs Spielfeld erstellen
     PGraphics panel;
     PGraphics login;
     PGraphics schlange;
     PGraphics apfel;
     PGraphics gameOver;
+
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
     int focusedField = 0;
+    int state = 0; // 0 for first screen, 1 for second screen
 
     String nickname = " ";
     boolean nicknameActive = false;

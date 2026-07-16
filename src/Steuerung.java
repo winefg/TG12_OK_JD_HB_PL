@@ -46,7 +46,11 @@ public class Steuerung {
         if (aktuellesSpiel != null) {
             aktuellesSpiel.laufen();
             if (aktuellesSpiel.checkApfel()){
-                dieGUI.geschwindigkeitMs -=2;
+                if (dieGUI.geschwindigkeitMs>300){
+                    dieGUI.geschwindigkeitMs -=2;
+                }else if (dieGUI.geschwindigkeitMs<=300){
+                    if ((aktuellesSpiel.getAnzKoerperZellen()-2)%4 == 0) dieGUI.geschwindigkeitMs -=1;
+                }
                 highscore.setScore(highscore.getScore()+1);
             }
             if (aktuellesSpiel.checkVerloren()) {
@@ -82,11 +86,11 @@ public class Steuerung {
         if (highscore == null) {
             return;
         }
-        String hsS = "Highscore: " + Integer.toString(highscore.getHighscoreRekord());
+        String highscoreString = "Highscore: " + Integer.toString(highscore.getHighscoreRekord());
 
         dieGUI.panel.fill(0); // Schwarze Textfarbe
         dieGUI.panel.textAlign(dieGUI.CENTER); // Zentriert (oder LEFT, je nach Wunsch)
-        dieGUI.panel.text(hsS, 100, 40); // Text an Position x=100, y=40 schreiben
+        dieGUI.panel.text(highscoreString, 100, 40); // Text an Position x=100, y=40 schreiben
     }
 
     public void anzeigenScore(){
