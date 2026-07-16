@@ -46,10 +46,12 @@ public class GUI extends PApplet {
     int cursorNicknameRegister = 0;
     int cursorPasswordRegister = 0;
 
+
     public void settings() {
         size(1000, 1000);
         pixelDensity(1);
     }
+
 
     public void setup(){
         steuerung = new Steuerung(this);
@@ -62,14 +64,15 @@ public class GUI extends PApplet {
         endScreen = createGraphics(1000, 1000);
     }
 
+
     @Override
     public void keyPressed() {
         // SHIFT + G -> Spiel ohne Login starten (für Admin)
         if (keyEvent.isShiftDown() && (key == 'g' || key == 'G')) {
             loginSucces = true;
             nickname = "ADMIN";
-            steuerung.startAsAdmin();
-            steuerung.ss.spiel_Start();
+            //steuerung.startAsAdmin();
+            steuerung.getAktuellesSpiel().spiel_Start();
             state = 1;
         }
         // 'keyCode' ist eine eingebaute globale Variable in Processing
@@ -111,6 +114,7 @@ public class GUI extends PApplet {
         }
     }
 
+
     public void draw() {
         if (state==0){                  //Startbildschirm
             drawStartPage();
@@ -129,7 +133,6 @@ public class GUI extends PApplet {
             drawSnake();
             drawApfel();
             isLoginSuccess();
-
         } else if (state==3) {          //Login-Bildschirm
             drawPanelLogin();
             image(login, 250, 600);
@@ -158,17 +161,12 @@ public class GUI extends PApplet {
         spielFeld.fill(179, 214, 101);
         spielFeld.rect(0, 0, fieldSize, fieldSize);
 
-
 // Kästchen
-        //spielFeld.stroke(0, 100, 0);
-        //spielFeld.strokeWeight(0);
         spielFeld.noStroke();
         spielFeld.fill(172, 208, 94);
 
-
         for (int y = 0; y < gridSize; y++) {
             for (int x = 0; x < gridSize; x++) {
-
                 if ((x + y) % 2 == 1) {
                     spielFeld.rect(
                             x * cellSize,
@@ -183,6 +181,7 @@ public class GUI extends PApplet {
         image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Uebergeordneten Spielfeld
     }
 
+
     void drawCursorNickname(String option, int cursorPosition) {
         if (!showCursor) return;
         float cursorX = 270 + login.textWidth(option.substring(0, cursorPosition));
@@ -191,6 +190,7 @@ public class GUI extends PApplet {
         login.line(cursorX, 50, cursorX, 70);
         login.noStroke();
     }
+
 
     void drawCursorPassword(String option, int cursorPosition) {
         if (!showCursor) return;
@@ -225,7 +225,6 @@ public class GUI extends PApplet {
             if (focusedField == 11){
                 drawCursorNickname(nicknameRegister, cursorNicknameRegister);
             }
-
         } else {
             login.text(nickname, 270, 70);
             if (focusedField == 1) {
@@ -233,8 +232,6 @@ public class GUI extends PApplet {
             drawCursorNickname(nickname, cursorNickname);
             }
         }
-
-
 
 
         // Password Text
@@ -280,9 +277,7 @@ public class GUI extends PApplet {
             login.text("Already registered", 190, 215);
             login.endDraw();
         }
-
     }
-
 
 
     void drawPanelSpielfeld(){
@@ -312,6 +307,7 @@ public class GUI extends PApplet {
         // Das fertige Panel auf den Hauptbildschirm bringen
         image(panel, 0, 0);
     }
+
 
     void drawStartPage() {
         background(255);
@@ -353,6 +349,7 @@ public class GUI extends PApplet {
         }
     }
 
+
     public void anzeigenStartButton(int r, int g, int b) {
         fill(r, g ,b);
         rect(400, 250, 200, 60);
@@ -362,6 +359,7 @@ public class GUI extends PApplet {
         text("START", 500, 290);
     }
 
+
     public void pleaseLogin() {
         fill(255, 0, 0);
         textAlign(CENTER);
@@ -369,9 +367,11 @@ public class GUI extends PApplet {
         text("Please login", 500, 350);
     }
 
+
     public void chooseStroke() {
         login.stroke(255,0, 0 );
     }
+
 
     void drawSnake(){
         schlange.beginDraw();
@@ -393,6 +393,7 @@ public class GUI extends PApplet {
         image(schlange, 120,120);
     }
 
+
     public void drawApfel(){
         apfel.beginDraw();
         apfel.clear();
@@ -402,6 +403,7 @@ public class GUI extends PApplet {
         apfel.endDraw();
         image(apfel, 120,120);
     }
+
 
     public void drawWinScreen(){
         endScreen.beginDraw();
@@ -433,20 +435,20 @@ public class GUI extends PApplet {
 
 
     public void mousePressed() {
-            if (mouseX > 400 &&
-                mouseX < 600 &&
-                mouseY > 250 &&
-                mouseY < 310 &&
-                state == 0) {
-                if (loginSucces) {
-                    println("Start gedrückt!");
-                    steuerung.getAktuellesSpiel().spiel_Start();
-                    steuerung.highscore.setScore(0);
-                    geschwindigkeitMs = 400;
-                    state = 1;
-                } else {
-                    pleaseText = !pleaseText;
-                }
+        if (mouseX > 400 &&
+            mouseX < 600 &&
+            mouseY > 250 &&
+            mouseY < 310 &&
+            state == 0) {
+            if (loginSucces) {
+                println("Start gedrückt!");
+                steuerung.getAktuellesSpiel().spiel_Start();
+                steuerung.highscore.setScore(0);
+                geschwindigkeitMs = 400;
+                state = 1;
+            } else {
+                pleaseText = !pleaseText;
+            }
          }
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
@@ -512,16 +514,16 @@ public class GUI extends PApplet {
                     registerMode = !registerMode;
                     println("not registered gedrückt!");
                 }
-                }else {
-                    if(mouseX > 375 &&
-                        mouseX < 625 &&
-                        mouseY > 800 &&
-                        mouseY < 820) {
-                        focusedField = 3;
-                        register = false;
-                        registerMode = true;
-                        println("already have account gedrückt!");
-                    }
+            }else {
+                if(mouseX > 375 &&
+                    mouseX < 625 &&
+                    mouseY > 800 &&
+                    mouseY < 820) {
+                    focusedField = 3;
+                    register = false;
+                    registerMode = true;
+                    println("already have account gedrückt!");
+                }
             }
         }
 
@@ -537,7 +539,6 @@ public class GUI extends PApplet {
 
             // Neustart
             if (mouseX > 300 && mouseX < 700 && mouseY > 510 && mouseY < 580) {
-
                 println("Neustart");
                 steuerung.getAktuellesSpiel().spiel_Start();
                 steuerung.highscore.setScore(0);
@@ -546,8 +547,8 @@ public class GUI extends PApplet {
                 state = 1;
             }
         }
-
     }
+
 
     public void keyTyped() {
         if (focusedField == 1) {
@@ -634,6 +635,7 @@ public class GUI extends PApplet {
         }
     }
 
+
     void drawGameOver() {
         gameOver.beginDraw();
         gameOver.background(40);
@@ -674,6 +676,7 @@ public class GUI extends PApplet {
 
         image(gameOver, 120, 120);
     }
+
 
     public static void main(String[] args) {
         PApplet.main("GUI");

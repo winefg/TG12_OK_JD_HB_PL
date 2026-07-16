@@ -12,13 +12,16 @@ public abstract class SnakeSpiel {
         spieleNr++;
     }
 
+
     public int getId() {
         return id;
     }
 
+
     public String getName() {
         return name;
     }
+
 
     public int getSchwierigkeit() {
         return schwierigkeit;

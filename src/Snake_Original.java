@@ -18,21 +18,26 @@ public class Snake_Original extends SnakeSpiel {
         this.anzKoerperZellen = anzKoerperZellen;
     }
 
+
     public ArrayList<Zelle> getZelleArrayList() {
         return zelleArrayList;
     }
+
 
     public int getAnzKoerperZellen(){
         return anzKoerperZellen;
     }
 
+
     public Aepfel getApfel() {
         return apfel;
     }
 
+
     public Spielfeld getSpielfeld() {
         return spielfeld;
     }
+
 
     public void spiel_Start(){
         input = 'r';
@@ -49,6 +54,7 @@ public class Snake_Original extends SnakeSpiel {
         zelleArrayList.add(koerperZelle2);
         apfel = new Aepfel(12, 7);
     }
+
 
     // Verarbeitet den Tastendruck direkt aus Processing
     public void verarbeiteTastendruck(int keyCode) {
@@ -71,6 +77,7 @@ public class Snake_Original extends SnakeSpiel {
                 break;
         }
     }
+
 
     public void laufen(){
         laufenKoerper();
@@ -98,12 +105,14 @@ public class Snake_Original extends SnakeSpiel {
         lastInput = input;
     }
 
+
     private void laufenKoerper() {
         for (int i = zelleArrayList.size() - 1; i > 0; i--) {
             zelleArrayList.get(i).setX(zelleArrayList.get(i - 1).getX());
             zelleArrayList.get(i).setY(zelleArrayList.get(i - 1).getY());
         }
     }
+
 
     public boolean checkVerloren(){
         for (int i=zelleArrayList.size()-1; i>0; i--){
@@ -118,6 +127,7 @@ public class Snake_Original extends SnakeSpiel {
         System.out.println(zelleArrayList.get(1).getX());
         return false;
     }
+
 
     public void generateApfel() {
         boolean collision = true;
@@ -137,6 +147,7 @@ public class Snake_Original extends SnakeSpiel {
         apfel.setX(newApfelX);
         apfel.setY(newApfelY);
     }
+
 
     public boolean checkApfel(){
         if (apfel.getX() == zelleArrayList.getFirst().getX() && apfel.getY() == zelleArrayList.getFirst().getY()){

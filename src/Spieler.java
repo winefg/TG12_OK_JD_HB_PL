@@ -11,11 +11,13 @@ public class Spieler {
         return richtigerLogin;
     }
 
+
     public Spieler(String name, String passwort) {
         this.id = spielerNr++;
         this.name = name;
         this.passwort = passwort;
     }
+
 
     public int getId() {
         return id;

@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login">
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Zweite Code-Formatierung.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Aepfel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Aepfel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Highscore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Highscore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SnakeSpiel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SnakeSpiel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake_Original.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Original.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spieler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spieler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Spielfeld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Spielfeld.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Zelle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Zelle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/MyJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/MyJDBC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,75 +34,67 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/winefg/TG12_OK_JD_HB_PL.git&quot;,
-    &quot;accountId&quot;: &quot;d7375bef-a886-489c-8d06-dc950390f19e&quot;
+    &quot;accountId&quot;: &quot;908d9a80-ac8a-4a66-8625-c7c17294dc44&quot;
   }
 }</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_1_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_2_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp__Steuerung.class" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.314653347775373E-128" />
-      <entry key="S2" value="1.2346703325370587E-32" />
-      <entry key="S5" value="1.8956094159726093E-13" />
-      <entry key="S10" value="6.846674409997732E-7" />
-      <entry key="S30" value="0.028487396490108525" />
-      <entry key="S60" value="0.47728195278359836" />
-      <entry key="M2" value="2.239836379730139" />
-      <entry key="M5" value="7.500406242687761" />
-      <entry key="M10" value="13.838236664777058" />
-      <entry key="M15" value="18.83294480759852" />
-      <entry key="M30" value="30.62099473100383" />
-      <entry key="H1" value="44.60769797004758" />
-      <entry key="H2" value="56.45632694905804" />
-      <entry key="H4" value="64.34881964137192" />
-      <entry key="D1" value="72.25168119611712" />
-      <entry key="W1" value="73.74655867771529" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000000013" />
+      <entry key="S5" value="1.0000011642704039" />
+      <entry key="S10" value="1.0013791825773755" />
+      <entry key="S30" value="1.210787141213144" />
+      <entry key="S60" value="1.8012485436370471" />
+      <entry key="M2" value="2.804106881828056" />
+      <entry key="M5" value="5.647266203944434" />
+      <entry key="M10" value="9.819097192695285" />
+      <entry key="M15" value="13.782542201876119" />
+      <entry key="M30" value="23.13003832409973" />
+      <entry key="H1" value="32.675976338241924" />
+      <entry key="H2" value="39.72588193924207" />
+      <entry key="H4" value="44.04238255279291" />
+      <entry key="D1" value="48.125046696429656" />
+      <entry key="W1" value="48.873755965162374" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000099151903852" />
-      <entry key="S2" value="1.0997872982945813" />
-      <entry key="S5" value="1.3977682418790134" />
-      <entry key="S10" value="1.630690814693398" />
-      <entry key="S30" value="1.888998872246956" />
-      <entry key="S60" value="2.454765134734852" />
-      <entry key="M2" value="5.1507105391198" />
-      <entry key="M5" value="14.623051881924901" />
-      <entry key="M10" value="24.834632668828473" />
-      <entry key="M15" value="31.583489079562746" />
-      <entry key="M30" value="45.14606784973063" />
-      <entry key="H1" value="59.575655463526026" />
-      <entry key="H2" value="71.2318056806399" />
-      <entry key="H4" value="78.83162440649174" />
-      <entry key="D1" value="86.34776983581652" />
-      <entry key="W1" value="87.7607041148013" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="2.330215376932537E-77" />
+      <entry key="S2" value="6.947827318680085E-20" />
+      <entry key="S5" value="2.171398864485422E-8" />
+      <entry key="S10" value="1.473567524802838E-4" />
+      <entry key="S30" value="0.05325457958989575" />
+      <entry key="S60" value="0.25424805333667183" />
+      <entry key="M2" value="0.7655776900340081" />
+      <entry key="M5" value="2.9471257490715694" />
+      <entry key="M10" value="7.093300916479197" />
+      <entry key="M15" value="11.146887748684797" />
+      <entry key="M30" value="20.275951459569814" />
+      <entry key="H1" value="29.20351467494221" />
+      <entry key="H2" value="35.648702082759435" />
+      <entry key="H4" value="39.551059640638115" />
+      <entry key="D1" value="43.21713682508297" />
+      <entry key="W1" value="43.88710128966296" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.7185056894668576E-18" />
-      <entry key="MS500" value="3.6050384247914843E-4" />
-      <entry key="S2" value="0.21071951369280711" />
-      <entry key="S5" value="0.805381884721218" />
-      <entry key="S10" value="1.2671327335359657" />
-      <entry key="S30" value="1.774421577591338" />
-      <entry key="S60" value="2.8372548509871183" />
-      <entry key="M2" value="7.294339432209095" />
-      <entry key="M5" value="22.02003361697029" />
-      <entry key="M10" value="38.577249565834926" />
-      <entry key="M15" value="50.32761331638883" />
-      <entry key="M30" value="75.69358998817148" />
-      <entry key="H1" value="104.13013356894524" />
-      <entry key="H2" value="127.6547009859522" />
-      <entry key="H4" value="143.16147759618445" />
-      <entry key="D1" value="158.5959161393219" />
-      <entry key="W1" value="161.50674772801418" />
+      <entry key="MS100" value="5.574359788592826E-295" />
+      <entry key="MS500" value="1.557660303063951E-59" />
+      <entry key="S2" value="3.040237006597057E-15" />
+      <entry key="S5" value="2.4047424295084172E-6" />
+      <entry key="S10" value="0.002589398889920162" />
+      <entry key="S30" value="0.36224184504376605" />
+      <entry key="S60" value="1.3645206821021247" />
+      <entry key="M2" value="3.1161164683610196" />
+      <entry key="M5" value="8.358337029488702" />
+      <entry key="M10" value="16.768180841709018" />
+      <entry key="M15" value="24.81805179890673" />
+      <entry key="M30" value="43.332150136313274" />
+      <entry key="H1" value="61.833024711371394" />
+      <entry key="H2" value="75.34775130411558" />
+      <entry key="H4" value="83.578910895616" />
+      <entry key="D1" value="91.33958454447328" />
+      <entry key="W1" value="92.76048131399205" />
     </decayedShown>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -126,6 +127,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.26222.65" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="" />
@@ -151,77 +160,56 @@
       <option name="project" value="LOCAL" />
       <updated>1783965449358</updated>
     </task>
-    <task id="LOCAL-00003" summary="Apfel anzeigen fertig stellen">
+    <task id="LOCAL-00003" summary="Erste Code-Formatierung.">
       <option name="closed" value="true" />
-      <created>1784040042923</created>
+      <created>1784216124634</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1784040042923</updated>
+      <updated>1784216124634</updated>
     </task>
-    <task id="LOCAL-00004" summary="Implement user highscores + DB">
+    <task id="LOCAL-00004" summary="Zweite Code-Formatierung.">
       <option name="closed" value="true" />
-      <created>1784053965053</created>
+      <created>1784216516221</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1784053965053</updated>
+      <updated>1784216516221</updated>
     </task>
-    <task id="LOCAL-00005" summary="Score auf 0 beim &quot;Neustart&quot;">
-      <option name="closed" value="true" />
-      <created>1784054414153</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1784054414153</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Highscore &amp; Aktueller Score in gameOver()">
-      <option name="closed" value="true" />
-      <created>1784055452614</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1784055452614</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Highscore &amp; Aktueller Score">
-      <option name="closed" value="true" />
-      <created>1784055464401</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1784055464401</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Highscore &amp; Aktueller Score">
-      <option name="closed" value="true" />
-      <created>1784055498290</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1784055498290</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login">
-      <option name="closed" value="true" />
-      <created>1784225918075</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1784225918075</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update src" />
     <MESSAGE value="Inputs zum Laufen fertig" />
-    <MESSAGE value="Apfel anzeigen fertig stellen" />
-    <MESSAGE value="Implement user highscores + DB" />
-    <MESSAGE value="Score auf 0 beim &quot;Neustart&quot;" />
-    <MESSAGE value="Highscore &amp; Aktueller Score in gameOver()" />
-    <MESSAGE value="Highscore &amp; Aktueller Score" />
-    <MESSAGE value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
+    <MESSAGE value="Erste Code-Formatierung." />
+    <MESSAGE value="Zweite Code-Formatierung." />
+    <option name="LAST_COMMIT_MESSAGE" value="Zweite Code-Formatierung." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/GUI.java</url>
+          <line>30</line>
+          <properties field="password" class="GUI" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

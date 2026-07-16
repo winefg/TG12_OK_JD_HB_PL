@@ -12,24 +12,29 @@ public class Highscore {
         this.highscoreRekord = highscoreRekord;
     }
 
-    public Highscore() {
-    }
+
+    public Highscore() {}
+
 
     public int getSpielerID() {
         return spielerID;
     }
 
+
     public int getScore() {
         return score;
     }
+
 
     public void setScore(int highscore) {
         this.score = highscore;
     }
 
+
     public int getHighscoreRekord() {
         return highscoreRekord;
     }
+
 
     public void setHighscoreRekord(int highscoreRekord) {
         this.highscoreRekord = highscoreRekord;

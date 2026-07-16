@@ -4,7 +4,6 @@ import java.sql.*;
 import constants.CommonConstants;
 
 public class MyJDBC {
-
     public static int register(String nickname, String password) {
         try {
             if(!checkUser(nickname, password)) {
@@ -40,19 +39,16 @@ public class MyJDBC {
                             "Highscore created for user: " + userID
                     );
                     return userID;
-
                 }
-
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-
         return -1;
     }
 
-    public static boolean checkUser(String nickname, String password){
 
+    public static boolean checkUser(String nickname, String password){
         nickname = nickname.trim();
         password = password.trim();
 
@@ -70,12 +66,6 @@ public class MyJDBC {
             System.out.println("Searching:");
             System.out.println("Nickname: " + nickname);
             System.out.println("Password: " + password);
-
-           /* System.out.println(                                                   überprüfen
-                    "SELECT * FROM " + CommonConstants.DB_USERS_TABLE_NAME +
-                            " WHERE nickname = '" + nickname +
-                            "' AND password = '" + password + "'"
-            ); */
 
             ResultSet resultSet = checkUserExists.executeQuery();
             if(resultSet.next()){
@@ -114,18 +104,12 @@ public class MyJDBC {
                 System.out.println("LOGIN SUCCESS. USER ID: " + id);
                 return id;
             }
-
-
         } catch(SQLException e){
             e.printStackTrace();
         }
         System.out.println("LOGIN FAILED");
         return -1;
     }
-
-
-    //_________________________________________________________________________________________________
-
 
 
     // Der "Datenbank-Getter": Holt den Score live aus der DB
@@ -176,5 +160,4 @@ public class MyJDBC {
             e.printStackTrace();
         }
     }
-
 }
