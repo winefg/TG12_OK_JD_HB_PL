@@ -45,6 +45,7 @@ public class GUI extends PApplet {
     int cursorNicknameRegister = 0;
     int cursorPasswordRegister = 0;
 
+    boolean emptyFieldsWarning = false;
 
     public void settings() {
         size(1000, 1000);
@@ -190,7 +191,8 @@ public class GUI extends PApplet {
         login.stroke(255);
         login.strokeWeight(3);
         login.line(cursorX, 50, cursorX, 70);
-        login.noStroke();
+        login.stroke(0);
+        login.strokeWeight(1); // stroke auf Standard-Stroke reseten
     }
 
 
@@ -201,8 +203,8 @@ public class GUI extends PApplet {
         login.stroke(255);
         login.strokeWeight(3);
         login.line(cursorX, 130, cursorX, 150);
-        login.strokeWeight(1);  // zurücksetzen
-        login.noStroke();
+        login.stroke(0);
+        login.strokeWeight(1);  // stroke auf Standard-Stroke reseten
     }
 
 
@@ -236,7 +238,7 @@ public class GUI extends PApplet {
             login.text(nickname, 270, 70);
             if (focusedField == 1) {
                 // Cursor bei nickname
-            drawCursorNickname(nickname, cursorNickname);
+                drawCursorNickname(nickname, cursorNickname);
             }
         }
 
@@ -246,10 +248,10 @@ public class GUI extends PApplet {
         if (registerMode) {
             login.text("Password: ", 40, 150);
         } else {
-            login.text("Your password: ", 40, 150);
+            login.text("New password: ", 40, 150);
         }
 
-        // Pasword Field
+        // Password Field
         login.fill(0);
         login.rect(260, 110, 220, 60);
         login.fill(255);
@@ -263,21 +265,26 @@ public class GUI extends PApplet {
         } else {
             login.text(password, 270, 150);
             if (focusedField == 2) {
-                    // Cursor bei password
+                // Cursor bei password
                 drawCursorPassword(password, cursorPassword);
             }
         }
-
-
+        if (emptyFieldsWarning) {
+            login.fill(255, 0, 0);
+            login.textSize(16);
+            login.text("Please fill in all fields", 125, 260);
+        }
         // Submit Button
-        login.fill(100);
+        boolean hoverSubmit = mouseX > 375 && mouseX < 625 && mouseY > 870 && mouseY < 930 && state == 3;
+        login.fill(hoverSubmit ? color(30, 140, 30) : color(40, 180, 40));
         login.rect(125,270, 250, 60);
         login.fill(255);
         login.textSize(20);
         login.text("Press ENTER to submit", 152, 307);
 
         // not/already registered Button
-        login.fill(100);
+        boolean hoverToggle = mouseX > 375 && mouseX < 625 && mouseY > 800 && mouseY < 820 && state == 3;
+        login.fill(hoverToggle ? color(140, 140, 140) : color(100));
         login.rect(125, 200, 250, 20);
         login.fill(255);
         login.textSize(15);
@@ -328,7 +335,7 @@ public class GUI extends PApplet {
         fill(0);
         textAlign(CENTER);
         textSize(80);
-        text("Alex lange Schlange", 500, 100);
+        text("Alex' lange Schlange", 500, 100);
 
 // Start-Button
         if (loginSucces) {
@@ -376,6 +383,58 @@ public class GUI extends PApplet {
         pleaseText = false;
         state = 0;
         println("Login success: " + nickname);
+    }
+
+    public void logout() {
+        nickname = "";
+        password = "";
+        nicknameRegister = "";
+        passwordRegister = "";
+        cursorNickname = 0;
+        cursorPassword = 0;
+        focusedField = 0;
+        nicknameActive = false;
+        passwordActive = false;
+    }
+
+    //  Submit-Button
+    void submitForm() {
+        // überprüfen ob Felder leer sind???
+        if (register) {
+            if (nicknameRegister.isEmpty() || passwordRegister.isEmpty()) {
+                emptyFieldsWarning = true;
+                return;
+            }
+        } else {
+            if (nickname.isEmpty() || password.isEmpty()) {
+                emptyFieldsWarning = true;
+                return;
+            }
+        }
+        emptyFieldsWarning = false;
+        if (register) {
+            int id = MyJDBC.register(nicknameRegister, passwordRegister);
+            if (id != -1) {
+                nickname = nicknameRegister;
+                password = passwordRegister;
+                loginSuccess(id);
+                register = false;
+                registerMode = true;
+                println("Registered:");
+                println("Nickname: " + nicknameRegister);
+                println("Password: " + passwordRegister);
+            } else {
+                println("User already exists");
+                println("Please login");
+            }
+        } else {
+            int id = MyJDBC.login(nickname, password);
+            if (id != -1) {
+                loginSuccess(id);
+            } else {
+                println("Wrong login");
+            }
+        }
     }
 
 
@@ -465,10 +524,10 @@ public class GUI extends PApplet {
 
     public void mousePressed() {
         if (mouseX > 400 &&
-            mouseX < 600 &&
-            mouseY > 250 &&
-            mouseY < 310 &&
-            state == 0) {
+                mouseX < 600 &&
+                mouseY > 250 &&
+                mouseY < 310 &&
+                state == 0) {
             if (loginSucces) {
                 println("Start gedrückt!");
                 steuerung.getAktuellesSpiel().spiel_Start();
@@ -478,7 +537,7 @@ public class GUI extends PApplet {
             } else {
                 pleaseText = !pleaseText;
             }
-         }
+        }
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
                 mouseY > 25 &&
@@ -488,26 +547,20 @@ public class GUI extends PApplet {
             state = 0;
         }
         if (mouseX > 400 &&
-            mouseX < 600 &&
-            mouseY > 500 &&
-            mouseY < 560 &&
-            state == 0) {
+                mouseX < 600 &&
+                mouseY > 500 &&
+                mouseY < 560 &&
+                state == 0) {
             if (loginSucces){
                 println("Logout");
                 loginSucces = false;
-                nickname = "";
-                password = "";
-                nicknameRegister = "";
-                passwordRegister = "";
-                cursorNickname = 0;
-                cursorPassword = 0;
-                focusedField = 0;
-                nicknameActive = false;
-                passwordActive = false;
+                logout();
                 steuerung.setAktSpielerID(-1);
             } else {
                 println("Login gedrückt");
                 state = 3;
+                focusedField = 1;
+                nicknameActive = true;
             }
 
         }
@@ -551,9 +604,9 @@ public class GUI extends PApplet {
                 }
             } if (registerMode) {
                 if(mouseX > 375 &&
-                    mouseX < 625 &&
-                    mouseY > 800 &&
-                    mouseY < 820) {
+                        mouseX < 625 &&
+                        mouseY > 800 &&
+                        mouseY < 820) {
                     focusedField = 3;
                     register = true;
                     registerMode = !registerMode;
@@ -561,14 +614,19 @@ public class GUI extends PApplet {
                 }
             }else {
                 if(mouseX > 375 &&
-                    mouseX < 625 &&
-                    mouseY > 800 &&
-                    mouseY < 820) {
+                        mouseX < 625 &&
+                        mouseY > 800 &&
+                        mouseY < 820) {
                     focusedField = 3;
                     register = false;
                     registerMode = true;
                     println("already have account gedrückt!");
                 }
+            }
+            if (mouseX > 375 && mouseX < 625 &&
+                    mouseY > 870 && mouseY < 930) {
+                println("Submit-Button gedrückt!");     // Submit-Button
+                submitForm();
             }
         }
 
@@ -577,9 +635,12 @@ public class GUI extends PApplet {
             // Ragequit
             if (mouseX > 300 && mouseX < 700 &&
                     mouseY > 400 && mouseY < 470) {
-
                 println("Ausloggen");
+                loginSucces = false;
+                logout();
+                steuerung.setAktSpielerID(-1);
                 state = 0;
+
             }
 
             // Neustart
@@ -596,6 +657,7 @@ public class GUI extends PApplet {
 
 
     public void keyTyped() {
+        emptyFieldsWarning = false;
         if (focusedField == 1) {
             if (key == BACKSPACE) {
                 if (cursorNickname > 0) {   // // Position von Cursor speichern (aber -1)
@@ -620,12 +682,7 @@ public class GUI extends PApplet {
                     cursorPassword--;
                 }
             } else if (key == ENTER) {
-               int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
-                if (id != -1){
-                    loginSuccess(id);
-                } else {
-                    println("Wrong login");
-                }
+                submitForm();
             } else {
                 password = password.substring(0, cursorPassword)
                         + key
@@ -637,7 +694,7 @@ public class GUI extends PApplet {
             if (key == BACKSPACE) {
                 if (cursorNicknameRegister > 0) {
                     nicknameRegister = nicknameRegister.substring(0, cursorNicknameRegister - 1)
-                                    + nicknameRegister.substring(cursorNicknameRegister);  // Entfernt das letzte Zeichen.
+                            + nicknameRegister.substring(cursorNicknameRegister);  // Entfernt das letzte Zeichen.
                     cursorNicknameRegister--;
                 }
             } else if (key == ENTER) {
@@ -652,24 +709,11 @@ public class GUI extends PApplet {
             if (key == BACKSPACE) {
                 if (cursorPasswordRegister > 0) {
                     passwordRegister = passwordRegister.substring(0, cursorPasswordRegister - 1)  // Entfernt das letzte Zeichen.
-                                    + passwordRegister.substring(cursorPasswordRegister);
+                            + passwordRegister.substring(cursorPasswordRegister);
                     cursorPasswordRegister--;
                 }
             } else if (key == ENTER) {
-                int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
-                if (id != -1) {
-                    nickname = nicknameRegister;
-                    password = passwordRegister;
-                    loginSuccess(id);
-                    register = false;
-                    registerMode = true;
-                    println("Registered:");
-                    println("Nickname: " + nicknameRegister);
-                    println("Password: " + passwordRegister);
-                } else {
-                    println("User already exists");
-                    println("Please login");
-                }
+                submitForm();
             } else {
                 passwordRegister = passwordRegister.substring(0, cursorPasswordRegister)
                         + key
@@ -709,7 +753,7 @@ public class GUI extends PApplet {
         gameOver.textSize(30);
         gameOver.text("Ragequit", 380, 315);
 
-        // Neustarten
+        // Neustarten#
         gameOver.fill(40, 180, 40);
         gameOver.rect(180, 390, 400, 70, 15);
 
@@ -726,4 +770,3 @@ public class GUI extends PApplet {
         PApplet.main("GUI");
     }
 }
-
