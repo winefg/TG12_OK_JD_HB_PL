@@ -132,7 +132,10 @@ public class MyJDBC {
     public static int getHighscore(int idusers) {
         try {
             Connection connection = DriverManager.getConnection(
-                    CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
+                    CommonConstants.DB_URL,
+                    CommonConstants.DB_USERNAME,
+                    CommonConstants.DB_PASSWORD
+            );
 
             String sql = "SELECT score FROM " + CommonConstants.DB_HIGHSCORES_TABLE_NAME +
                             " WHERE idusers = ?";
@@ -146,27 +149,8 @@ public class MyJDBC {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0; // Standardwert, falls nichts gefunden wurde
+        return 0;
     }
-
-    // Der "Datenbank-Setter": Aktualisiert den Score live in der DB
-    public static void setScoreInDatenbank(String nickname, int neuerScore) {
-        try {
-            Connection connection = DriverManager.getConnection(
-                    CommonConstants.DB_URL, CommonConstants.DB_USERNAME, CommonConstants.DB_PASSWORD);
-
-            String sql = "UPDATE " + CommonConstants.DB_HIGHSCORES_TABLE_NAME + " SET score = ? WHERE nickname = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, neuerScore);
-            statement.setString(2, nickname);
-
-            statement.executeUpdate(); // Schreibt den Wert in die DB
-            System.out.println("Score erfolgreich in DB aktualisiert!");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 
 
     public static void updateHighscore(int idusers, int score) {
