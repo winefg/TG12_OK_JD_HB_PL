@@ -435,13 +435,10 @@ public class GUI extends PApplet {
     }
 
     void drawGameOver() {
-
         gameOver.beginDraw();
         gameOver.background(40);
-
         gameOver.textAlign(CENTER, CENTER);
 
-        // Titel
         gameOver.textSize(55);
         if (state == 4) {
             gameOver.fill(255, 0, 0);
@@ -451,13 +448,13 @@ public class GUI extends PApplet {
             gameOver.text("Gewonnen", 380, 80);
         }
 
-        // Highscore
+        // hs
         gameOver.fill(255);
         gameOver.textSize(35);
         gameOver.text("Highscore: " + steuerung.getHighscore(), 380, 170);
-        // Aktueller Score
+        // score
         gameOver.text("Score: " + steuerung.getScore(), 380, 220);
-        // Ragequit-Button
+        // quit
         gameOver.fill(180, 40, 40);
         gameOver.rect(180, 280, 400, 70, 15);
 
@@ -465,7 +462,7 @@ public class GUI extends PApplet {
         gameOver.textSize(30);
         gameOver.text("Ragequit", 380, 315);
 
-        // Neustart-Button
+        // neustarten
         gameOver.fill(40, 180, 40);
         gameOver.rect(180, 390, 400, 70, 15);
 
@@ -478,6 +475,6 @@ public class GUI extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main("GUI"); // Launch sketch
+        PApplet.main("GUI");
     }
 }
