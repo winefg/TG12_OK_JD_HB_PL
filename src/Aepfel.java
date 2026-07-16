@@ -2,12 +2,11 @@ public class Aepfel {
     private int x;
     private int y;
 
+
     public Aepfel(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
-
 
     public int getX() {
         return x;

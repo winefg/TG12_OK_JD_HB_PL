@@ -4,6 +4,7 @@ import processing.core.PGraphics;
 import static db.MyJDBC.*;
 
 
+
 public class GUI extends PApplet {
     boolean adminMode = false;
     Steuerung steuerung;
@@ -16,6 +17,7 @@ public class GUI extends PApplet {
     PGraphics apfel;
     PGraphics endScreen;
     PGraphics gameOver;
+
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
 
@@ -112,7 +114,6 @@ public class GUI extends PApplet {
     public void draw() {
         if (state==0){                  //Startbildschirm
             drawStartPage();
-
         } else if (state == 1) {                //Hintergrund zeichnen
             rect(0,0,1000,1000);
             drawPanelSpielfeld();
@@ -137,7 +138,7 @@ public class GUI extends PApplet {
             drawGameOver();
         }
         else if (state == 5) {
-            drawWinScreen();
+            drawGameOver();
         }
     }
 
@@ -147,7 +148,7 @@ public class GUI extends PApplet {
         spielFeld.background(70, 84, 40); //immer die normalen Funktionen von Processing verwenden + Name der Variable davor
 
         int cellSize = 40;
-        int gridSize = 19;
+        int gridSize = 19; //Muss mit Spielfeld übereinstimmen
 
         int fieldSize = gridSize * cellSize;
 
@@ -214,7 +215,6 @@ public class GUI extends PApplet {
         // Nickname Text
         login.textSize(30);
         login.text("Nickname: ", 40, 70);
-
         // Nickname Field
         login.fill( 0);
         login.rect(260, 30, 220, 60);
@@ -296,7 +296,6 @@ public class GUI extends PApplet {
 
         // Ruft die Steuerung auf, die den Highscore auf das Panel zeichnet
         steuerung.anzeigenHighscore();
-
         steuerung.anzeigenScore();
         // Normaler Score (etwas nach unten versetzt bei y=90, damit es nicht kollidiert)
         //panel.text("Score: 0", 100, 90);
@@ -378,13 +377,17 @@ public class GUI extends PApplet {
         schlange.beginDraw();
         schlange.clear();
         schlange.noStroke();
-        schlange.circle(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20, 36);
-        schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX())),40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+2, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()), 36);
-        schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+2, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY())), 36, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()));
-        for (int i = 1; i < steuerung.getAktuellesSpiel().getZelleArrayList().size(); i++) {
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36); //Quadrat 36x36 Körper
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getX() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) * 20, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 4, 36);
-            schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getY() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) * 20, 36, 4);
+        schlange.fill(79, 113, 223);
+        for (int i = 0; i < steuerung.getAktuellesSpiel().getZelleArrayList().size(); i++) {
+            if (i >= 1){
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 36, 36); //Quadrat 36x36 Körper
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getX() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) * 20, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 2, 4, 36);
+                schlange.rect((40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getX()) + 2, (40 * steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) + 18 + (steuerung.getAktuellesSpiel().getZelleArrayList().get(i - 1).getY() - steuerung.getAktuellesSpiel().getZelleArrayList().get(i).getY()) * 20, 36, 4);
+            } else {
+                schlange.circle(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20, 36);
+                schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX())),40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+2, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getX()), 36);
+                schlange.rect(40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getX()+2, 40*steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()+20+(20*(steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()-steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY())), 36, 20*(steuerung.getAktuellesSpiel().getZelleArrayList().getFirst().getY()-steuerung.getAktuellesSpiel().getZelleArrayList().get(1).getY()));
+            }
         }
         schlange.endDraw();
         image(schlange, 120,120);
@@ -435,16 +438,16 @@ public class GUI extends PApplet {
                 mouseY > 250 &&
                 mouseY < 310 &&
                 state == 0) {
-                if (loginSucces) {
-                    println("Start gedrückt!");
-                    steuerung.ss.spiel_Start();
-                    steuerung.highscore.setScore(0);
-                    geschwindigkeitMs = 400;
-                    state = 1;
-                 } else {
-                    pleaseText = !pleaseText;
-                }
-        }
+            if (loginSucces) {
+                println("Start gedrückt!");
+                steuerung.getAktuellesSpiel().spiel_Start();
+                steuerung.highscore.setScore(0);
+                geschwindigkeitMs = 400;
+                state = 1;
+            } else {
+                pleaseText = !pleaseText;
+            }
+         }
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
                 mouseY > 25 &&
@@ -487,6 +490,7 @@ public class GUI extends PApplet {
                         mouseY < 690) {
                     nicknameActive = true;
                     focusedField = 1;
+
                     println("username gedrückt!");
 
                 }
@@ -519,8 +523,6 @@ public class GUI extends PApplet {
                         println("already have account gedrückt!");
                     }
             }
-
-
         }
 
         if (state == 4) {
@@ -530,20 +532,14 @@ public class GUI extends PApplet {
                     mouseY > 400 && mouseY < 470) {
 
                 println("Ausloggen");
-
-                nickname = "";
-                password = "";
-
                 state = 0;
             }
 
             // Neustart
-            if (mouseX > 300 && mouseX < 700 &&
-                    mouseY > 510 && mouseY < 580) {
+            if (mouseX > 300 && mouseX < 700 && mouseY > 510 && mouseY < 580) {
 
                 println("Neustart");
-
-                steuerung.ss.spiel_Start();
+                steuerung.getAktuellesSpiel().spiel_Start();
                 steuerung.highscore.setScore(0);
                 letzterSchrittZeit = millis();
 
@@ -556,9 +552,6 @@ public class GUI extends PApplet {
     public void keyTyped() {
         if (focusedField == 1) {
             if (key == BACKSPACE) {
-                /*if (nickname.length() > 0) {
-                    nickname = nickname.substring(0, nickname.length() - 1);  // Entfernt das letzte Zeichen.
-                }*/
                 if (cursorNickname > 0) {   // // Position von Cursor speichern (aber -1)
                     nickname = nickname.substring(0, cursorNickname - 1)
                             + nickname.substring(cursorNickname);
@@ -584,7 +577,7 @@ public class GUI extends PApplet {
                int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
                 if (id != -1){
                     steuerung.setAktSpielerID(id);
-                    steuerung.addSpiel(steuerung.ss);
+                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
                     state = 0;                                  // zum Start
                     loginSucces = !loginSucces;
                     pleaseText = false;
@@ -624,7 +617,7 @@ public class GUI extends PApplet {
                 int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
                 if (id != -1) {
                     steuerung.setAktSpielerID(id);            // id setzen
-                    steuerung.addSpiel(steuerung.ss);
+                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
                     println("Registered:");
                     println("Nickname:" + nicknameRegister);
                     println("Password:" + passwordRegister);
@@ -639,27 +632,30 @@ public class GUI extends PApplet {
                 cursorPasswordRegister++;
             }
         }
-
     }
-    void drawGameOver() {
 
+    void drawGameOver() {
         gameOver.beginDraw();
         gameOver.background(40);
-
         gameOver.textAlign(CENTER, CENTER);
-
         // Titel
         gameOver.fill(255, 0, 0);
         gameOver.textSize(55);
-        gameOver.text("Leider verkackt", 380, 80);
+        if (state == 4) {
+            gameOver.fill(255, 0, 0);
+            gameOver.text("Leider verkackt", 380, 80);
+        }else if (state == 5) {
+            gameOver.fill(255, 255, 255);
+            gameOver.text("Gewonnen", 380, 80);
+        }
 
         // Highscore
         gameOver.fill(255);
         gameOver.textSize(35);
         gameOver.text("Highscore: " + steuerung.getHighscore(), 380, 170);
-        // Aktueller Score
+        // Score
         gameOver.text("Score: " + steuerung.getScore(), 380, 220);
-        // Ragequit-Button
+        // Quit
         gameOver.fill(180, 40, 40);
         gameOver.rect(180, 280, 400, 70, 15);
 
@@ -667,7 +663,7 @@ public class GUI extends PApplet {
         gameOver.textSize(30);
         gameOver.text("Ragequit", 380, 315);
 
-        // Neustart-Button
+        // Neustarten
         gameOver.fill(40, 180, 40);
         gameOver.rect(180, 390, 400, 70, 15);
 
@@ -680,7 +676,7 @@ public class GUI extends PApplet {
     }
 
     public static void main(String[] args) {
-        PApplet.main("GUI"); // Launch sketch
+        PApplet.main("GUI");
     }
 }
 
