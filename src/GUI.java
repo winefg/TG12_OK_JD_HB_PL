@@ -66,6 +66,7 @@ public class GUI extends PApplet {
 
     @Override
     public void keyPressed() {
+        /*
         // SHIFT + G - Spiel ohne Login starten (für Admin)
         if (keyEvent.isShiftDown() && (key == 'g' || key == 'G')) {
             loginSucces = true;
@@ -73,10 +74,12 @@ public class GUI extends PApplet {
             steuerung.startAsAdmin();
             steuerung.getAktuellesSpiel().spiel_Start();
             state = 1;
-        }
+        } */
+
         // 'keyCode' ist eine eingebaute globale Variable in Processing
-        if (steuerung != null) {
+        if (state == 2 && steuerung != null) {
             steuerung.checkInput(keyCode);
+            return;
         }
         // Cursor mit Pfeilen bewegen
         if (focusedField == 1) {
@@ -183,6 +186,7 @@ public class GUI extends PApplet {
 
     void drawCursorNickname(String option, int cursorPosition) {
         if (!showCursor) return;
+        cursorPosition = Math.min(cursorPosition, option.length());
         float cursorX = 270 + login.textWidth(option.substring(0, cursorPosition));
         login.stroke(255);
         login.strokeWeight(3);
@@ -193,6 +197,7 @@ public class GUI extends PApplet {
 
     void drawCursorPassword(String option, int cursorPosition) {
         if (!showCursor) return;
+        cursorPosition = Math.min(cursorPosition, option.length());
         float cursorX = 270 + login.textWidth(option.substring(0, cursorPosition));
         login.stroke(255);
         login.strokeWeight(3);
@@ -213,7 +218,11 @@ public class GUI extends PApplet {
         }
         // Nickname Text
         login.textSize(30);
-        login.text("Nickname: ", 40, 70);
+        if (registerMode) {
+            login.text("Nickname: ", 40, 70);
+        } else {
+            login.text("New nickname: ", 40, 70);
+        }
         // Nickname Field
         login.fill( 0);
         login.rect(260, 30, 220, 60);
@@ -234,7 +243,13 @@ public class GUI extends PApplet {
 
 
         // Password Text
-        login.text("Password: ", 40, 150);
+        login.textSize(30);
+        if (registerMode) {
+            login.text("Password: ", 40, 150);
+        } else {
+            login.text("Your password: ", 40, 150);
+        }
+
         // Pasword Field
         login.fill(0);
         login.rect(260, 110, 220, 60);
@@ -334,7 +349,11 @@ public class GUI extends PApplet {
         fill(255);
         textAlign(CENTER);
         textSize(30);
-        text("LOGIN", 500, 540);
+        if (loginSucces) {
+            text("LOGOUT", 500, 540);
+        } else {
+            text("LOGIN", 500, 540);
+        }
 
 // Nickname anzeigen
         isLoginSuccess();
@@ -346,6 +365,18 @@ public class GUI extends PApplet {
             textSize(30);
             text("Nickname: " + nickname, 500, 980);
         }
+    }
+
+    void loginSuccess(int id) {
+        steuerung.setAktSpielerID(id);
+        steuerung.addSpiel();
+        focusedField = 0;
+        nicknameActive = false;
+        passwordActive = false;
+        loginSucces = true;
+        pleaseText = false;
+        state = 0;
+        println("Login success: " + nickname);
     }
 
 
@@ -458,12 +489,28 @@ public class GUI extends PApplet {
             state = 0;
         }
         if (mouseX > 400 &&
-                mouseX < 600 &&
-                mouseY > 500 &&
-                mouseY < 560 &&
-                state == 0) {
-            println("Login gedrückt");
-            state = 3;
+            mouseX < 600 &&
+            mouseY > 500 &&
+            mouseY < 560 &&
+            state == 0) {
+            if (loginSucces){
+                println("Logout");
+                loginSucces = false;
+                nickname = "";
+                password = "";
+                nicknameRegister = "";
+                passwordRegister = "";
+                cursorNickname = 0;
+                cursorPassword = 0;
+                focusedField = 0;
+                nicknameActive = false;
+                passwordActive = false;
+                steuerung.setAktSpielerID(-1);
+            } else {
+                println("Login gedrückt");
+                state = 3;
+            }
+
         }
         if (state == 3) {
             if (register == true) {
@@ -576,11 +623,7 @@ public class GUI extends PApplet {
             } else if (key == ENTER) {
                int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
                 if (id != -1){
-                    steuerung.setAktSpielerID(id);
-                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
-                    state = 0;                                  // zum Start
-                    loginSucces = !loginSucces;
-                    pleaseText = false;
+                    loginSuccess(id);
                 } else {
                     println("Wrong login");
                 }
@@ -616,11 +659,14 @@ public class GUI extends PApplet {
             } else if (key == ENTER) {
                 int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
                 if (id != -1) {
-                    steuerung.setAktSpielerID(id);            // id setzen
-                    steuerung.addSpiel(steuerung.getAktuellesSpiel());
+                    nickname = nicknameRegister;
+                    password = passwordRegister;
+                    loginSuccess(id);
+                    register = false;
+                    registerMode = true;
                     println("Registered:");
-                    println("Nickname:" + nicknameRegister);
-                    println("Password:" + passwordRegister);
+                    println("Nickname: " + nicknameRegister);
+                    println("Password: " + passwordRegister);
                 } else {
                     println("User already exists");
                     println("Please login");

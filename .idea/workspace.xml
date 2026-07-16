@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login">
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="As ADMIN ohne login spielen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Aepfel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Aepfel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Highscore.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Highscore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/SnakeSpiel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/SnakeSpiel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Snake_Original.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Spieler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Spieler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Spielfeld.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Spielfeld.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Zelle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Zelle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/db/MyJDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/db/MyJDBC.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
     </list>
@@ -34,12 +25,12 @@
     &quot;assignee&quot;: &quot;hbr3d&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/winefg/TG12_OK_JD_HB_PL.git&quot;,
-    &quot;accountId&quot;: &quot;d7375bef-a886-489c-8d06-dc950390f19e&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/winefg/TG12_OK_JD_HB_PL.git",
+    "accountId": "d43dcfeb-8419-47f3-b39b-7df84f56c409"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_1_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///private/var/folders/k8/19tn2h3d623g57n8734v9b880000gn/T/tmp_2_Steuerung.class" root0="FORCE_HIGHLIGHTING" />
@@ -219,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1784225918075</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="As ADMIN ohne login spielen">
+      <option name="closed" value="true" />
+      <created>1784230110885</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1784230110885</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,7 +233,8 @@
     <MESSAGE value="Highscore &amp; Aktueller Score in gameOver()" />
     <MESSAGE value="Highscore &amp; Aktueller Score" />
     <MESSAGE value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
+    <MESSAGE value="As ADMIN ohne login spielen" />
+    <option name="LAST_COMMIT_MESSAGE" value="As ADMIN ohne login spielen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

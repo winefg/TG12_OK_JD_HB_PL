@@ -77,8 +77,13 @@ public class Steuerung {
     }
 
 
-    public void addSpiel (SnakeSpiel spiel){
+    public void addSpiel (){
         snakeSpiel.clear();
+        Snake_Original spiel = new Snake_Original(
+                "PLAYER",
+                aktSpielID,
+                0
+        );
         snakeSpiel.add(spiel);
         anzSpiele++;
         int alterHighscore = MyJDBC.getHighscore(aktSpielerID);     // Highscore aus DB nehmen
@@ -129,19 +134,18 @@ public class Steuerung {
     }
 
 
-
+/*
     public void startAsAdmin() {
-
         snakeSpiel.clear();
 
         Snake_Original spiel = new Snake_Original(
                 "ADMIN",      // Spieler ID (ADMIN)
-                0,      // Spiel ID
+                1,      // Spiel ID
                 0       // Startscore
         );
         snakeSpiel.add(spiel);
         highscore = new Highscore();
         highscore.setScore(0);
         highscore.setHighscoreRekord(0);
-    }
+    } */
 }
