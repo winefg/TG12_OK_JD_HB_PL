@@ -66,7 +66,6 @@ public class GUI extends PApplet {
 
     @Override
     public void keyPressed() {
-        /*
         // SHIFT + G - Spiel ohne Login starten (für Admin)
         if (keyEvent.isShiftDown() && (key == 'g' || key == 'G')) {
             loginSucces = true;
@@ -74,7 +73,7 @@ public class GUI extends PApplet {
             steuerung.startAsAdmin();
             steuerung.getAktuellesSpiel().spiel_Start();
             state = 1;
-        } */
+        }
 
         // 'keyCode' ist eine eingebaute globale Variable in Processing
         if (state == 2 && steuerung != null) {

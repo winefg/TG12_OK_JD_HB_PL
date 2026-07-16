@@ -134,7 +134,7 @@ public class Steuerung {
     }
 
 
-/*
+
     public void startAsAdmin() {
         snakeSpiel.clear();
 
@@ -147,5 +147,5 @@ public class Steuerung {
         highscore = new Highscore();
         highscore.setScore(0);
         highscore.setHighscoreRekord(0);
-    } */
+    }
 }

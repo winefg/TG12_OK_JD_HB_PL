@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="As ADMIN ohne login spielen">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/GUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Clone/Steuerung.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Steuerung.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Steuerung.java" afterDir="false" />
-    </list>
+    <list default="true" id="797dda6a-3fe6-4ac3-8c0c-4be136a86f22" name="Changes" comment="Login-Panel verbessern (loginSuccess(int id), LOGOUT, Modes, cursor)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -218,11 +212,30 @@
       <option name="project" value="LOCAL" />
       <updated>1784230110885</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Login-Panel verbessern (loginSuccess(int id), LOGOUT, Modes, cursor)">
+      <option name="closed" value="true" />
+      <created>1784234185808</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1784234185808</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update src" />
@@ -234,7 +247,8 @@
     <MESSAGE value="Highscore &amp; Aktueller Score" />
     <MESSAGE value="Cursor, Login-Panel, Optimierung &amp; Anpassung von Eingabe-Funktionen, Start after Login" />
     <MESSAGE value="As ADMIN ohne login spielen" />
-    <option name="LAST_COMMIT_MESSAGE" value="As ADMIN ohne login spielen" />
+    <MESSAGE value="Login-Panel verbessern (loginSuccess(int id), LOGOUT, Modes, cursor)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login-Panel verbessern (loginSuccess(int id), LOGOUT, Modes, cursor)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
