@@ -9,7 +9,6 @@ public class Steuerung {
     private int anzHighscores;
     private int aktSpielerID;
     private int aktSpielID;
-
     private ArrayList<SnakeSpiel> snakeSpiel;
 
     Highscore highscore;
@@ -145,6 +144,15 @@ public class Steuerung {
             return 0;
         }
         return highscore.getScore();
+
+    }
+
+    public void startAsAdmin() {
+        snakeSpiel.clear();
+        snakeSpiel.add(ss);
+        highscore = new Highscore();
+        highscore.setScore(0);
+        highscore.setHighscoreRekord(0);
 
     }
 }

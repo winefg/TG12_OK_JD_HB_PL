@@ -4,8 +4,8 @@ import processing.core.PGraphics;
 import static db.MyJDBC.*;
 
 
-
 public class GUI extends PApplet {
+    boolean adminMode = false;
     Steuerung steuerung;
     Highscore highscore;
     int state = 0; // 0 for first screen, 1 for second screen
@@ -18,6 +18,31 @@ public class GUI extends PApplet {
     PGraphics gameOver;
     int letzterSchrittZeit = 0;
     int geschwindigkeitMs = 400; // Alle 400 Millisekunden ein Schritt (kleiner = schneller)
+
+    // Login/Register var'
+    int focusedField = 0;
+
+    String nickname = "";
+    boolean nicknameActive = false;
+    String nicknameRegister = "";
+
+    String password = "";
+    boolean passwordActive = false;
+    String passwordRegister = "";
+
+    boolean register = false;
+    boolean loginSucces = false;
+
+    boolean registerMode = true;
+    boolean pleaseText = false;
+
+    // vars damit Cursor blinkt
+    boolean showCursor = true;
+    int lastBlink = 0;
+    int cursorNickname = 0;
+    int cursorPassword = 0;
+    int cursorNicknameRegister = 0;
+    int cursorPasswordRegister = 0;
 
     public void settings() {
         size(1000, 1000);
@@ -37,15 +62,57 @@ public class GUI extends PApplet {
 
     @Override
     public void keyPressed() {
+        // SHIFT + G -> Spiel ohne Login starten (für Admin)
+        if (keyEvent.isShiftDown() && (key == 'g' || key == 'G')) {
+            loginSucces = true;
+            nickname = "ADMIN";
+            steuerung.startAsAdmin();
+            steuerung.ss.spiel_Start();
+            state = 1;
+        }
         // 'keyCode' ist eine eingebaute globale Variable in Processing
         if (steuerung != null) {
             steuerung.checkInput(keyCode);
+        }
+        // Cursor mit Pfeilen bewegen
+        if (focusedField == 1) {
+            if (keyCode == LEFT && cursorNickname > 0) {
+                cursorNickname--;
+            }
+            if (keyCode == RIGHT && cursorNickname < nickname.length()) {
+                cursorNickname++;
+            }
+        }
+        if (focusedField == 2) {
+            if (keyCode == LEFT && cursorPassword > 0) {
+                cursorPassword--;
+            }
+            if (keyCode == RIGHT && cursorPassword < password.length()) {
+                cursorPassword++;
+            }
+        }
+        if (focusedField == 11) {
+            if (keyCode == LEFT && cursorNicknameRegister > 0) {
+                cursorNicknameRegister--;
+            }
+            if (keyCode == RIGHT && cursorNicknameRegister < nicknameRegister.length()) {
+                cursorNicknameRegister++;
+            }
+        }
+        if (focusedField == 12) {
+            if (keyCode == LEFT && cursorPasswordRegister > 0) {
+                cursorPasswordRegister--;
+            }
+            if (keyCode == RIGHT && cursorPasswordRegister < passwordRegister.length()) {
+                cursorPasswordRegister++;
+            }
         }
     }
 
     public void draw() {
         if (state==0){                  //Startbildschirm
             drawStartPage();
+
         } else if (state == 1) {                //Hintergrund zeichnen
             rect(0,0,1000,1000);
             drawPanelSpielfeld();
@@ -60,6 +127,8 @@ public class GUI extends PApplet {
             drawSpielFeld();
             drawSnake();
             drawApfel();
+            isLoginSuccess();
+
         } else if (state==3) {          //Login-Bildschirm
             drawPanelLogin();
             image(login, 250, 600);
@@ -113,28 +182,39 @@ public class GUI extends PApplet {
         image(spielFeld, 120, 120); //Das gezeichnete anzeigen, mit Koordinaten auf dem Uebergeordneten Spielfeld
     }
 
-    int focusedField = 0;
+    void drawCursorNickname(String option, int cursorPosition) {
+        if (!showCursor) return;
+        float cursorX = 270 + login.textWidth(option.substring(0, cursorPosition));
+        login.stroke(255);
+        login.strokeWeight(3);
+        login.line(cursorX, 50, cursorX, 70);
+        login.noStroke();
+    }
 
-    String nickname = " ";
-    boolean nicknameActive = false;
-    String nicknameRegister = "";
+    void drawCursorPassword(String option, int cursorPosition) {
+        if (!showCursor) return;
+        float cursorX = 270 + login.textWidth(option.substring(0, cursorPosition));
+        login.stroke(255);
+        login.strokeWeight(3);
+        login.line(cursorX, 130, cursorX, 150);
+        login.strokeWeight(1);  // zurücksetzen
+        login.noStroke();
+    }
 
-    String password = "";
-    boolean passwordActive = false;
-    String passwordRegister = "";
-
-    boolean register = false;
-    boolean loginSucces = false;
 
     void drawPanelLogin() {
         login.beginDraw();
         login.background(200);
 
         //if (focusedField == 1 || focusedField == 11) {}
-
+        if (millis() - lastBlink >= 500) {
+            showCursor = !showCursor;
+            lastBlink = millis();
+        }
         // Nickname Text
         login.textSize(30);
         login.text("Nickname: ", 40, 70);
+
         // Nickname Field
         login.fill( 0);
         login.rect(260, 30, 220, 60);
@@ -142,8 +222,16 @@ public class GUI extends PApplet {
 
         if (register == true) {
             login.text(nicknameRegister, 270, 70);
+            if (focusedField == 11){
+                drawCursorNickname(nicknameRegister, cursorNicknameRegister);
+            }
+
         } else {
             login.text(nickname, 270, 70);
+            if (focusedField == 1) {
+                // Cursor bei nickname
+            drawCursorNickname(nickname, cursorNickname);
+            }
         }
 
 
@@ -158,8 +246,16 @@ public class GUI extends PApplet {
         login.textSize(30);
         if (register == true) {
             login.text(passwordRegister, 270, 150);
+            if (focusedField == 12) {
+                drawCursorPassword(passwordRegister, cursorPasswordRegister);
+            }
+
         } else {
             login.text(password, 270, 150);
+            if (focusedField == 2) {
+                    // Cursor bei password
+                drawCursorPassword(password, cursorPassword);
+            }
         }
 
 
@@ -167,20 +263,26 @@ public class GUI extends PApplet {
         login.fill(100);
         login.rect(125,270, 250, 60);
         login.fill(255);
-        login.textSize(45);
-        login.text("SUBMIT", 170, 315);
+        login.textSize(20);
+        login.text("Press ENTER to submit", 152, 307);
 
-
-        // Not registered
+        // not/already registered Button
         login.fill(100);
         login.rect(125, 200, 250, 20);
         login.fill(255);
         login.textSize(15);
-        login.text("Not registered yet?", 190, 215);
-        login.endDraw();
-
+        if (registerMode) {
+            // Not registered
+            login.text("Not registered yet?", 190, 215);
+            login.endDraw();
+        } else {
+            // Login if already registered
+            login.text("Already registered", 190, 215);
+            login.endDraw();
+        }
 
     }
+
 
 
     void drawPanelSpielfeld(){
@@ -221,12 +323,16 @@ public class GUI extends PApplet {
         text("Alex lange Schlange", 500, 100);
 
 // Start-Button
-        fill(0);
-        rect(400, 250, 200, 60);
-        fill(255);
-        textAlign(CENTER);
-        textSize(30);
-        text("START", 500, 290);
+        if (loginSucces) {
+            anzeigenStartButton(0, 204, 0);
+        } else{
+            anzeigenStartButton(128, 128, 128);
+        }
+
+// "Please login"-Text anzeigen, falls sofort Start gedrückt
+        if (pleaseText){
+            pleaseLogin();
+        }
 
 // Login-Button
         fill(0);
@@ -236,6 +342,32 @@ public class GUI extends PApplet {
         textSize(30);
         text("LOGIN", 500, 540);
 
+// Nickname anzeigen
+        isLoginSuccess();
+    }
+
+    public void isLoginSuccess() {
+        if (loginSucces){
+            fill(0);
+            textSize(30);
+            text("Nickname: " + nickname, 500, 980);
+        }
+    }
+
+    public void anzeigenStartButton(int r, int g, int b) {
+        fill(r, g ,b);
+        rect(400, 250, 200, 60);
+        fill(255);
+        textAlign(CENTER);
+        textSize(30);
+        text("START", 500, 290);
+    }
+
+    public void pleaseLogin() {
+        fill(255, 0, 0);
+        textAlign(CENTER);
+        textSize(30);
+        text("Please login", 500, 350);
     }
 
     public void chooseStroke() {
@@ -296,17 +428,22 @@ public class GUI extends PApplet {
         image(endScreen, 0,0);
     }
 
+
     public void mousePressed() {
-        if (mouseX > 400 &&
+            if (mouseX > 400 &&
                 mouseX < 600 &&
                 mouseY > 250 &&
                 mouseY < 310 &&
                 state == 0) {
-            println("Start gedrückt!");
-            steuerung.ss.spiel_Start();
-            steuerung.highscore.setScore(0);
-            geschwindigkeitMs = 400;
-            state = 1;
+                if (loginSucces) {
+                    println("Start gedrückt!");
+                    steuerung.ss.spiel_Start();
+                    steuerung.highscore.setScore(0);
+                    geschwindigkeitMs = 400;
+                    state = 1;
+                 } else {
+                    pleaseText = !pleaseText;
+                }
         }
         if (mouseX > width - 170 &&
                 mouseX < width - 30 &&
@@ -350,7 +487,6 @@ public class GUI extends PApplet {
                         mouseY < 690) {
                     nicknameActive = true;
                     focusedField = 1;
-
                     println("username gedrückt!");
 
                 }
@@ -362,16 +498,29 @@ public class GUI extends PApplet {
                     focusedField = 2;
                     println("password gedrückt!");
                 }
-            }
-
-            if(mouseX > 375 &&
+            } if (registerMode) {
+                if(mouseX > 375 &&
                     mouseX < 625 &&
                     mouseY > 800 &&
                     mouseY < 820) {
-                focusedField = 3;
-                register = true;
-                println("not registered gedrückt!");
+                    focusedField = 3;
+                    register = true;
+                    registerMode = !registerMode;
+                    println("not registered gedrückt!");
+                }
+                }else {
+                    if(mouseX > 375 &&
+                        mouseX < 625 &&
+                        mouseY > 800 &&
+                        mouseY < 820) {
+                        focusedField = 3;
+                        register = false;
+                        registerMode = true;
+                        println("already have account gedrückt!");
+                    }
             }
+
+
         }
 
         if (state == 4) {
@@ -407,48 +556,71 @@ public class GUI extends PApplet {
     public void keyTyped() {
         if (focusedField == 1) {
             if (key == BACKSPACE) {
-                if (nickname.length() > 0) {
+                /*if (nickname.length() > 0) {
                     nickname = nickname.substring(0, nickname.length() - 1);  // Entfernt das letzte Zeichen.
+                }*/
+                if (cursorNickname > 0) {   // // Position von Cursor speichern (aber -1)
+                    nickname = nickname.substring(0, cursorNickname - 1)
+                            + nickname.substring(cursorNickname);
+                    cursorNickname--;
                 }
             } else if (key == ENTER) {
                 focusedField = 2;
             } else if (key != ' ') {    // löschen Space vor Eingabe
-                nickname += key;
+                nickname = nickname.substring(0, cursorNickname)
+                        + key
+                        + nickname.substring(cursorNickname); // Position von Cursor speichern
+                cursorNickname++;
             }
         } else if (focusedField == 2) {
             if (key == BACKSPACE) {         // Delete Login-Pass
-                if (password.length() > 0) {
-                    password = password.substring(0, password.length() - 1);  // Entfernt das letzte Zeichen.
+                if (cursorPassword > 0) {
+                    password = password.substring(0, cursorPassword - 1)    // Entfernt das letzte Zeichen.
+                            + password
+                            .substring(cursorPassword);
+                    cursorPassword--;
                 }
-            } else if (focusedField == 2 && key == ENTER) {
+            } else if (key == ENTER) {
                int id = MyJDBC.login(nickname, password);        // Check ob alles richtig
                 if (id != -1){
                     steuerung.setAktSpielerID(id);
                     steuerung.addSpiel(steuerung.ss);
                     state = 0;                                  // zum Start
+                    loginSucces = !loginSucces;
+                    pleaseText = false;
                 } else {
                     println("Wrong login");
                 }
             } else {
-                password += key;
+                password = password.substring(0, cursorPassword)
+                        + key
+                        + password.substring(cursorPassword);
+                cursorPassword++;
             }
         }
-        if (register == true && focusedField == 11) {   // Delete Register-Nick
+        if (register && focusedField == 11) {   // Delete Register-Nick
             if (key == BACKSPACE) {
-                if (nicknameRegister.length() > 0) {
-                    nicknameRegister = nicknameRegister.substring(0, nicknameRegister.length() - 1);  // Entfernt das letzte Zeichen.
+                if (cursorNicknameRegister > 0) {
+                    nicknameRegister = nicknameRegister.substring(0, cursorNicknameRegister - 1)
+                                    + nicknameRegister.substring(cursorNicknameRegister);  // Entfernt das letzte Zeichen.
+                    cursorNicknameRegister--;
                 }
             } else if (key == ENTER) {
                 focusedField = 12;
             } else if (key != ' ') {     // löschen Space vor Eingabe
-                nicknameRegister += key;
+                nicknameRegister = nicknameRegister.substring(0, cursorNicknameRegister)
+                        + key
+                        + nicknameRegister.substring(cursorNicknameRegister);
+                cursorNicknameRegister++;
             }
-        } else if (register == true && focusedField == 12) {    // Delete Register-Pass
+        } else if (register && focusedField == 12) {    // Delete Register-Pass
             if (key == BACKSPACE) {
-                if (passwordRegister.length() > 0) {
-                    passwordRegister = passwordRegister.substring(0, passwordRegister.length() - 1);  // Entfernt das letzte Zeichen.
+                if (cursorPasswordRegister > 0) {
+                    passwordRegister = passwordRegister.substring(0, cursorPasswordRegister - 1)  // Entfernt das letzte Zeichen.
+                                    + passwordRegister.substring(cursorPasswordRegister);
+                    cursorPasswordRegister--;
                 }
-            } else if (register == true && focusedField == 12 && key == ENTER) {
+            } else if (key == ENTER) {
                 int id = MyJDBC.register(nicknameRegister, passwordRegister);   // MyJDBC-Register-Funktion
                 if (id != -1) {
                     steuerung.setAktSpielerID(id);            // id setzen
@@ -461,7 +633,10 @@ public class GUI extends PApplet {
                     println("Please login");
                 }
             } else {
-                passwordRegister += key;
+                passwordRegister = passwordRegister.substring(0, cursorPasswordRegister)
+                        + key
+                        + passwordRegister.substring(cursorPasswordRegister);
+                cursorPasswordRegister++;
             }
         }
 
