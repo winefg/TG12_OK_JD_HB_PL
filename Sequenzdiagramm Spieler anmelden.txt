@@ -32,15 +32,17 @@ opt Spieler gefunden
     deactivate Spieler
     Steuerung -> GUI: Login erfolgreich
     activate GUI
-    GUI -->> Benutzer: Spiel startet
+    GUI->> Benutzer: Spiel startet
+    GUI-->>Steuerung:
     deactivate GUI
 end
 end
 opt Spieler nicht gefunden
     Steuerung -> GUI: setAktiv(false)
     activate GUI
-    GUI -->> Benutzer: "Spieler existiert nicht"
+    GUI->> Benutzer: "Spieler existiert nicht"
+    GUI-->>Steuerung:
     deactivate GUI
-    end
-
-deactivate Steuerung
+    Steuerung-->>Benutzer:
+    deactivate Steuerung
+end
