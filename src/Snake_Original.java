@@ -22,7 +22,7 @@ public class Snake_Original extends SnakeSpiel {
         return zelleArrayList;
     }
 
-    public int  getAnzKoerperZellen(){
+    public int getAnzKoerperZellen(){
         return anzKoerperZellen;
     }
 
